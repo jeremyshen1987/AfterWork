@@ -1,7 +1,8 @@
+import Link from "next/link";
 import { useState, useEffect } from "react";
 import Search from './Search'
 import SearchResult from "./SearchResult";
-import New_Release from "./New_Release";
+import New_Release from "./Components/New_Release";
 
 import search from '../utils/search'
 import validate_token from "@/utils/validate_token";
@@ -23,6 +24,7 @@ export default function App(){
     useEffect(()=>{
 
         if(searchObj.query === ''){
+            setSearchResult({})
             return;
         }
         console.log('effect query', searchObj.query)
@@ -44,20 +46,14 @@ export default function App(){
 
     return(
         <>
-        <ul className="main_tabs">
-            <li onClick={validate_token}>Home</li>
-            <li onClick={()=>validate_token(new_release)}>Search</li>
-            <li >Library</li>
-        </ul>
        
         <div className="main_container">
             <Search categories={categories} selectCategories={selectCategories} setSelectCategories={setSelectCategories} 
                     handleChange={(e)=>handleChange(e, searchObj, setSearchObj)} />
 
             <SearchResult results={searchResult} selectCategories={selectCategories}/>
-
-            <New_Release />
-            {/* {searchObj.query === '' ? <New_Release /> : null} */}
+            
+            {searchObj.query === '' ? <New_Release /> : null}
 
         </div>
         </>

@@ -9,4 +9,3 @@ export default function handleChange(e, searchObj ,setSearchObj){
 }
 
 
-// handleSearch={()=>validate_token(search, searchObj, setSearchResult)}

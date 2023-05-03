@@ -1,3 +1,4 @@
+import Link from "next/link"
 import Card_Overview from "./Card_Overview"
 
 function Wrapper_Synopsis({children, name}){
@@ -26,7 +27,12 @@ export default function Cards_Group({type, items}){
 
             {items.map((item, idx) => {
                 return(
-                    <Card_Overview key={idx} type={type} item={item}/>
+                    <>
+                        <Link href={`${item.type}/${item.id}`} style={{ textDecoration: 'none' }}>
+                            <Card_Overview key={idx} type={type} item={item}/>
+                        </Link>
+                    
+                    </>
                 )
             })}
             

@@ -72,6 +72,11 @@ body {
   border: solid 1px black;
 }
 
+.main_tabs a {
+  text-decoration: none;
+  color: white;
+}
+
 .card_overview {
   max-width: 320px;
   aspect-ratio: 1/1.4;
@@ -84,6 +89,12 @@ body {
   gap: 5px;
   overflow: hidden;
 }
+
+.card_overview_text * {
+  color: white;
+  text-decoration: none;
+}
+
 
 .main_container {
   margin-left: clamp(240px, 15vw, 360px)
@@ -136,9 +147,18 @@ body {
   border-radius: 50%;
 }
 
+.img_mini {
+  max-width: 30px;
+  aspect-ratio: 1;
+}
+
 .img_small {
   max-width: 300px;
   aspect-ratio: 1;
+}
+
+button {
+  cursor: pointer;
 }
 
 .round_btn {
@@ -167,6 +187,10 @@ body {
 .active_btn {
   color: black;
   background-color: white;
+}
+
+a {
+  text-decoration: none;
 }
 
 @media (max-width: 800px) {

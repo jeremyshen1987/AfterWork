@@ -1,6 +1,6 @@
 import { useState,useEffect } from "react"
 
-import Cards_Group from "./Components/Cards_Group"
+import Cards_Group from "./Cards_Group"
 
 import validate_token from "@/utils/validate_token"
 import new_release from "@/utils/getNewRelease"
