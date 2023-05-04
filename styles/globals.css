@@ -25,7 +25,6 @@
   --text-positive: #1ed760;
   --text-announcement: #3d91f4;
   --essential-base: #fff;
-  --essential-subdued: #727272;
   --essential-bright-accent: #1ed760;
   --essential-negative: #e91429;
   --essential-warning: #ffa42b;
@@ -34,6 +33,8 @@
   --decorative-base: #fff;
   --decorative-subdued: #292929;
 
+
+  --essential-subdued: #727272;
   --search-bar-width-bottom: clamp(280px, 85vw, 800px)
 }
 
@@ -77,6 +78,55 @@ body {
   color: white;
 }
 
+.album_overview{
+  display: flex;
+  gap: 20px;
+  padding: 24px 36px;
+}
+
+.album_detail {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: 15px;
+}
+
+.album_detail h1 {
+  font-size: 4rem;
+}
+
+.playlist {
+  display: flex;
+  align-items: center;
+  padding: 12px 36px;
+}
+
+.track_num {
+  margin-right: 10px;
+}
+
+.track_artist {
+  color: gray;
+}
+
+.track_artist span {
+  margin-right: 8px;
+}
+
+.list_container {
+  flex: 1;  
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.duration {
+  height: 100%;
+  /* display: flex;
+  align-items: center; */
+}
+
+
 .card_overview {
   max-width: 320px;
   aspect-ratio: 1/1.4;
@@ -100,6 +150,10 @@ body {
   margin-left: clamp(240px, 15vw, 360px)
 }
 
+.relative {
+  position: relative
+}
+
 .flex {
   display: flex;
 }
@@ -107,6 +161,8 @@ body {
 .flex1 {
   flex: 1;
 }
+
+
 
 .wrap {
   flex-wrap: wrap;
@@ -189,8 +245,41 @@ button {
   background-color: white;
 }
 
-a {
-  text-decoration: none;
+#overlay {
+  position: fixed;
+  top: 0;
+  right: 0;
+  display: none;
+  width: 100vw;
+  height: 100vh;
+  background-color: black;
+  opacity: 0.4;
+  z-index: 10;
+}
+
+.panel {
+  display: none;
+  position: absolute;
+  top: 0;
+  width: inherit;
+  background-color: white;
+  border-radius: 10px;
+}
+
+.panel * {
+  color: black;
+}
+
+.panel h2 {
+  padding: 8px;
+}
+
+.panel li {
+  padding: 5px 16px;
+}
+
+li {
+  list-style: none;
 }
 
 @media (max-width: 800px) {

@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { useState, useEffect } from "react";
-import Search from './Search'
-import SearchResult from "./SearchResult";
+import Search from './Components/Search'
+import SearchResult from "./Components/SearchResult";
 import New_Release from "./Components/New_Release";
 
 import search from '../utils/search'
@@ -31,13 +31,14 @@ export default function App(){
 
         const timeout = setTimeout(() => {
             validate_token(search, searchObj, setSearchResult)
+            const overlay = document.getElementById('overlay')
+            overlay.style.display = 'none'
         }, 500);
 
         return ()=>{clearTimeout(timeout)}
     
     }, [searchObj.query])
-
-
+   
 
     if (typeof window !== 'undefined'){
         validate_token()

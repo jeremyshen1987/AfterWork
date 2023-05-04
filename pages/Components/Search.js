@@ -1,27 +1,28 @@
-import { useState } from "react";
-import Button_Round from "./Components/Button_Round";
+import { useState, useRef } from "react";
+import Button_Round from "./Button_Round";
 import changeCategories from "@/utils/changeCategories";
+import overlay_on from "@/utils/overlay_on";
+import overlay_off from "@/utils/overlay_off";
+import Suggestion_Panel from "./Suggestion_Panel";
 
 export default function Search({categories, selectCategories, setSelectCategories, handleChange, handleSearch}){
 
-    
+    const overlay = useRef()
+    const panel = useRef()
 
     return(
         <>
 
             <div className="flex center flex_width">
 
-                <select name="type" id="search_type" className="round_btn" onClick={handleChange}>
-                    <option value='show'>Show</option>
-                    <option value='album'>Album</option>
-                    <option value='artist'>Artist</option>
-                </select>
-
-                <input name="query" onChange={handleChange} className="flex1 round_btn"></input>
+                <input name="query" onChange={handleChange} onFocus={(e)=>overlay_on(e, overlay, panel)} onBlur={(e)=>overlay_off(e, overlay, panel)} maxLength='32' placeholder="Search Albums, Songs, Artists, Playlists..." className="flex1 round_btn"></input>
             </div>
 
+            <Suggestion_Panel ref={panel}/>
+            
+            <div ref={overlay} id="overlay"></div>
 
-            {/* available categories based on search result */}
+            {/* available categories based on search result  */}
             <div className="categories_btn flex gap_8 flex_width">
 
                 {categories.length > 0 && <Button_Round key='all' fn={(e)=>changeCategories(e, selectCategories, setSelectCategories, 'all')}>All</Button_Round>} 

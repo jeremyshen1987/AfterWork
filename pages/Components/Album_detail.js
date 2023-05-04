@@ -1,4 +1,5 @@
 import Link from "next/link"
+import Playlist from "./Playlist"
 
 export default function Album_detail({data}){
 
@@ -7,11 +8,11 @@ export default function Album_detail({data}){
 
         return(
             <>
-                <div key={id} className="overview">
+                <div key={id} className="album_overview">
 
                     <img src={images[0].url} className="img_small"></img>
 
-                    <div className="flex">
+                    <div className="album_detail">
                         <p>{type}</p>
                         <h1>{name}</h1>
                         
@@ -25,16 +26,17 @@ export default function Album_detail({data}){
                         })}
                             
                         <div>
-                            <span>{(new Date(release_date)).getFullYear()} -</span>
-                            <span>{total_tracks} songs, </span>
-                            <span></span>
+                            
+                            <span>{(new Date(release_date)).getFullYear()}</span>
+                            <span style={{margin: '0 5px'}}>•</span>
+                            <span>{total_tracks} songs</span>
                         </div>
                         
                     </div>
     
                 </div>
     
-              
+                <Playlist tracks={tracks}/>
             </>
     
         )

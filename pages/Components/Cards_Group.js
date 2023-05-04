@@ -25,7 +25,7 @@ export default function Cards_Group({type, items}){
 
         <Wrapper_Synopsis name={type}>
 
-            {items.map((item, idx) => {
+            {items.length === 0 ? <h3>Sorry, nothing found!</h3> : items.map((item, idx) => {
                 return(
                     <>
                         <Link href={`${item.type}/${item.id}`} style={{ textDecoration: 'none' }}>
