@@ -3,7 +3,7 @@ import { useState,useEffect } from "react"
 import Cards_Group from "./Cards_Group"
 
 import validate_token from "@/utils/validate_token"
-import new_release from "@/utils/getNewRelease"
+import new_release from "@/utils/newRelease"
 
 
 export default function New_Release() {
@@ -31,7 +31,7 @@ export default function New_Release() {
 
 
     return(
-        <Cards_Group key='new_release' type='NEW RELEASE: ' items={newRelease}/>
+        <Cards_Group key='new_release' type='New Release' items={newRelease}/>
     )
 
 

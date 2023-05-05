@@ -5,8 +5,8 @@ function Wrapper_Synopsis({children, name}){
 
     return(
         <div className="wrapper_card_group">
-            <h2>{name}</h2>
-            <div className="flex wrap center gap_20">
+            <div className="category_name">{name}</div>
+            <div className="wrapper_card">
                 {children}
             </div>
             
@@ -17,7 +17,7 @@ function Wrapper_Synopsis({children, name}){
 
 }
 
-
+// style={{ textDecoration: 'none' }}
 export default function Cards_Group({type, items}){
 
     return(
@@ -28,7 +28,7 @@ export default function Cards_Group({type, items}){
             {items.length === 0 ? <h3>Sorry, nothing found!</h3> : items.map((item, idx) => {
                 return(
                     <>
-                        <Link href={`${item.type}/${item.id}`} style={{ textDecoration: 'none' }}>
+                        <Link href={`${item.type}/${item.id}`} >
                             <Card_Overview key={idx} type={type} item={item}/>
                         </Link>
                     

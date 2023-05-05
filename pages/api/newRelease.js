@@ -5,7 +5,7 @@ export default async function newRelease(req, res){
 
 
 
-    const response = await fetch('https://api.spotify.com/v1/browse/new-releases', {
+    const response = await fetch('https://api.spotify.com/v1/browse/new-releases?limit=10', {
         method: 'GET',
         headers: { 
             'Authorization': `Bearer ${token}`

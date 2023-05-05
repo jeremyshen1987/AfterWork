@@ -21,7 +21,7 @@ export default function Card_Overview({type, item}){
                 <img src={img_url} className={type === 'artists' ? 'round_img img_small' : 'img_small'}></img>
 
                 <div className="card_overview_text">
-                    <h4> {item.name}</h4>
+                    <p> {item.name}</p>
                     <p>{type}</p>
                 </div>
             </div>
