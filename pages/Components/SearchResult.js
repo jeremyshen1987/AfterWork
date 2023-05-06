@@ -1,5 +1,6 @@
 import { useState } from "react"
 import Cards_Group from "./Cards_Group"
+import upperCase from "@/utils/upperCase"
 
 
 export default function SearchResult({results, selectCategories}){
@@ -20,7 +21,7 @@ export default function SearchResult({results, selectCategories}){
 
             return(
             <>
-            <Cards_Group key={idx} type={type} items={items}/>
+            <Cards_Group key={idx} type={upperCase(type)} items={items}/>
             </>
 
             )

@@ -73,7 +73,7 @@ body {
   border: solid 1px black;
 }
 
-.main_tabs a {
+a {
   text-decoration: none;
   color: white;
 }
@@ -254,11 +254,13 @@ body {
 
 .album_img_small {
   max-width: 300px;
+  max-height: 300px;
   height: auto;
 }
 
 .img_small {
   max-width: 180px;
+  max-height: 180px;
   height: auto;
 }
 
@@ -270,8 +272,8 @@ button {
   padding: 10px;
   border-radius: 30px;
   border: 0;
-  background-color: var(--essential-subdued);
-  color: white;
+  /* background-color: var(--background-highlight); */
+  color: white; 
 }
 
 .r {

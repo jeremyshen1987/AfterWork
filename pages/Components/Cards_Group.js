@@ -17,7 +17,6 @@ function Wrapper_Synopsis({children, name}){
 
 }
 
-// style={{ textDecoration: 'none' }}
 export default function Cards_Group({type, items}){
 
     return(

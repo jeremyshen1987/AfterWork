@@ -40,7 +40,7 @@ export default function Album_Page({data}){
     
                 </div>
     
-                <Playlist tracks={tracks}/>
+                <Playlist type={type} tracks={tracks}/>
             </>
     
         )

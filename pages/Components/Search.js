@@ -12,10 +12,8 @@ export default function Search({categories, selectCategories, setSelectCategorie
 
     return(
         <>
-
             <div className="flex center flex_width">
-
-                <input name="query" onChange={handleChange} onFocus={(e)=>overlay_on(e, overlay, panel)} onBlur={(e)=>overlay_off(e, overlay, panel)} maxLength='32' placeholder="Search Albums, Songs, Artists, Playlists..." className="flex1 round_btn"></input>
+                <input name="query" onChange={handleChange} onFocus={(e)=>overlay_on(e, overlay, panel)} onBlur={(e)=>overlay_off(e, overlay, panel)} maxLength="24" type="text" placeholder="Search Albums, Songs, Artists, Playlists..." className="flex1 round_btn" />
             </div>
 
             <Suggestion_Panel ref={panel}/>

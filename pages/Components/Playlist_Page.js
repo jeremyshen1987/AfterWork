@@ -5,7 +5,9 @@ import upperCase from "@/utils/upperCase"
 export default function Playlist_Page({data}){
 
     try{
-        const {artists, external_urls, images, release_date, name, tracks, total_tracks, type, id} = data
+
+        console.log('playlist data', data)
+        const {name, external_urls, followers, images, owner, tracks, type, id} = data
 
         return(
             <>
@@ -17,30 +19,24 @@ export default function Playlist_Page({data}){
                         <p className="album_type">{upperCase(type)}</p>
                         <h1>{name}</h1>
                         
-                        {artists.map(artist => {
-                            return(
-                                <div key={artist.id}>
-
-                                    {/* to do: */}
-                                    {/* <img src="" className="img_mini"></img> */}
-                                    
-                                    <Link href={`/${artist.type}/${artist.id}`} style={{ textDecoration: 'none', color: 'white' }}><p className="track_artist">{artist.name}</p></Link>
-                                </div>
-                            )
-                        })}
+                     
+                        <div key={owner.id}>
+                            <p className="track_artist">{owner.display_name}</p>
+                        </div>
+             
                             
                         <div>
                             
-                            <span>{(new Date(release_date)).getFullYear()}</span>
+                            <span>{followers.total} Likes</span>
                             <span style={{margin: '0 5px'}}>•</span>
-                            <span>{total_tracks} songs</span>
+                            <span>{tracks.total} songs</span>
                         </div>
                         
                     </div>
     
                 </div>
     
-                <Playlist tracks={tracks}/>
+                <Playlist type={type} tracks={tracks}/>
             </>
     
         )
