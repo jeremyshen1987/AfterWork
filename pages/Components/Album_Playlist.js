@@ -11,10 +11,10 @@ export default function Playlist({type, tracks}){
             <div>
                 {items.map(item => {
     
-                    const {name, artists, track_number, duration_ms } = item
+                    const {name, id, artists, track_number, duration_ms } = item
     
                     return(
-                        <div className="playlist">
+                        <div key={id} className="playlist">
                             <span className="track_num">{track_number}</span>
                             
                             <div className="list_container">
@@ -25,9 +25,9 @@ export default function Playlist({type, tracks}){
                                         {artists.map( (art, idx) => {
                                            
                                             if(idx < artists.length -1){
-                                                return<span>{art.name},</span>
+                                                return<span key={idx}>{art.name},</span>
                                             }else{
-                                                return <span>{art.name}</span>
+                                                return <span key={idx}>{art.name}</span>
                                             }
                                         
                                         })}
@@ -60,7 +60,7 @@ export default function Playlist({type, tracks}){
                     const duration_ms = track.duration_ms
     
                     return(
-                        <Link href={url}>
+                        <Link href={url} key={idx}>
                         <div className="playlist">
                             <span className="track_num">{track_number}</span>
                             
@@ -72,9 +72,9 @@ export default function Playlist({type, tracks}){
                                         {artists.map( (art, idx) => {
                                            
                                             if(idx < artists.length -1){
-                                                return<span>{art.name},</span>
+                                                return<span key={idx}>{art.name},</span>
                                             }else{
-                                                return <span>{art.name}</span>
+                                                return <span key={idx}>{art.name}</span>
                                             }
                                         
                                         })}
