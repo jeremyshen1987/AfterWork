@@ -55,6 +55,7 @@ body {
 
 .main_tabs {
   position: fixed;
+  top: 0;
   left: 0;
   width: clamp(240px, 15vw, 360px);
   display: flex;
@@ -102,7 +103,7 @@ a {
 .album_overview{
   display: flex;
   gap: 20px;
-  padding: 24px 36px;
+  padding: 24px 18px 36px 24px;
 }
 
 .album_detail {
@@ -110,10 +111,21 @@ a {
   flex-direction: column;
   justify-content: flex-end;
   gap: 15px;
+  width: 100%;
 }
 
 .album_detail h1 {
   font-size: 4rem;
+}
+
+.album_year {
+  display: flex;
+  align-items: center;
+}
+
+.like_btn {
+  margin-left: auto;
+  border: solid 2px gold;
 }
 
 .playlist {
@@ -133,7 +145,7 @@ a {
   margin-right: 10px;
 }
 
-.track_artist {
+.track_artist, .grey {
   color: gray;
 }
 
@@ -156,10 +168,6 @@ a {
 .category_name {
   margin: 10px;
   font-size: 1.6rem;
-}
-
-.wrapper_card a {
-
 }
 
 .card_overview {
@@ -189,6 +197,25 @@ a {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+}
+
+.track_album_container{
+  display: flex;
+  gap: 10px;
+  padding: 24px 36px;
+}
+
+.track_album_text{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+  padding: 0 15px;
+  border-radius: 15px;
+}
+
+.track_album_text:hover {
+  background-color: var(--song-hover);
 }
 
 
@@ -264,6 +291,17 @@ a {
   height: auto;
 }
 
+.img_tiny {
+  max-width: 60px;
+  max-height: 60px;
+  height: auto;
+}
+
+.album_link_text {
+  font-size: 24px;
+  color: gold;
+}
+
 button {
   cursor: pointer;
 }
@@ -272,13 +310,11 @@ button {
   padding: 10px;
   border-radius: 30px;
   border: 0;
-  /* background-color: var(--background-highlight); */
-  color: white; 
+  color: black; 
 }
 
+
 .r {
-  
-    
     display: inline-block;
     margin: 1em;
     padding: 1em 2em;
@@ -293,7 +329,7 @@ button {
 
 .active_btn {
   color: black;
-  background-color: white;
+  background-color: var(--text-positive);
 }
 
 #overlay {
@@ -315,6 +351,7 @@ button {
   width: inherit;
   background-color: white;
   border-radius: 10px;
+  padding: 10px 5px;
 }
 
 .panel * {
@@ -333,14 +370,29 @@ li {
   list-style: none;
 }
 
+.suggest_item:hover {
+  background-color: var(--essential-bright-accent);
+  }
+
+
+
+
+
+
+
+
+
+
+  
 @media (max-width: 800px) {
 
-  html {
+  /* html {
     color-scheme: dark;
-  }
+  } */
 
   .main_tabs {
     position: fixed;
+    top: auto;
     bottom: 0;
     display: flex;
     flex-direction: row;
@@ -365,6 +417,7 @@ li {
     aspect-ratio: auto;
     width: 100%;
     height: auto;
+    background-color: var(--background-highlight);
   }
 
   .card_overview :hover {

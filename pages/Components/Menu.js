@@ -1,13 +1,18 @@
+import { useContext } from "react"
 import Link from "next/link"
+import { useMainContext } from "@/utils/context";
+
 
 export default function Menu(){
+
 
     return(
         <ul className="main_tabs">
             <li><Link href='/'>Home</Link></li>
-            <li onClick={()=>validate_token(new_release)}>Search</li>
-            <li><Link href='/album/03'>Library</Link></li>
+            <li onClick={()=>refocus(router)}>Search</li>
+            <li><Link href='/liked'>Liked</Link></li>
         </ul>
     )
 
 }
+

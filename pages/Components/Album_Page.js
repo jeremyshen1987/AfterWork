@@ -1,8 +1,16 @@
 import Link from "next/link"
+import { useMainContext } from "@/utils/context"
 import Playlist from "./Album_Playlist"
 import upperCase from "@/utils/upperCase"
+import toggleLike from "@/utils/toggleLike"
 
 export default function Album_Page({data}){
+
+    const {likes, setLikes} = useMainContext()
+
+    if(typeof data === 'undefined' || data === null){
+        return
+    }
 
     try{
         const {artists, external_urls, images, release_date, name, tracks, total_tracks, type, id} = data
@@ -29,11 +37,14 @@ export default function Album_Page({data}){
                             )
                         })}
                             
-                        <div>
+                        <div className="album_year">
                             
                             <span>{(new Date(release_date)).getFullYear()}</span>
                             <span style={{margin: '0 5px'}}>•</span>
                             <span>{total_tracks} songs</span>
+                            <button onClick={()=>toggleLike(type, name, id, likes, setLikes)} className="round_btn like_btn">
+                                {likes.filter(like => like.id === id).length > 0 ? 'Unlike' : 'I Like this album'}
+                            </button>
                         </div>
                         
                     </div>

@@ -1,27 +1,42 @@
 
 export default function Card_Overview({type, item}){
 
+    if(typeof item === 'undefined' || item === null){
+        return
+    }
+
     try{
 
         let img_url;
-    
-        switch(type){
+        let data;
 
-            case 'tracks':
-                img_url = item.album.images[0].url
-                break;
+        if(type === 'Tracks'){
 
-            default:
-                img_url = item.images[0].url
-                break;
+            data = item.album
+            img_url = item.album.images[0].url
+            console.log('track data: ', data)
+        }else{
+            data = item
+            img_url = data.images[0].url
         }
+    
+        // switch(type){
+
+        //     case 'tracks':
+        //         img_url = item.album.images[0].url
+        //         break;
+
+        //     default:
+        //         img_url = item.images[0].url
+        //         break;
+        // }
 
         return(
-            <div key={item.id} className="card_overview border">
-                <img src={img_url} className={type === 'artists' ? 'round_img img_small' : 'img_small'}></img>
+            <div key={data.id} className="card_overview">
+                <img src={img_url} className={type === 'Artists' || type === 'Artist' ? 'round_img img_small' : 'img_small'}></img>
 
                 <div className="card_overview_text">
-                    <p> {item.name}</p>
+                    <p> {data.name}</p>
                     <p>{type}</p>
                 </div>
             </div>

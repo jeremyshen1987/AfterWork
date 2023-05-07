@@ -5,7 +5,9 @@ import upperCase from "@/utils/upperCase"
 
 export default function SearchResult({results, selectCategories}){
 
-    // results: {albums, artists, tracks, playlists}
+    if(typeof results === 'undefined' || results === null){
+        return
+    }
 
     try{
         const types = selectCategories.length === 0 ? Object.keys(results)

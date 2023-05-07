@@ -1,8 +1,10 @@
 import Link from "next/link";
-import { useState, useEffect } from "react";
+import { useContext, useState, useEffect } from "react";
 import Search from './Components/Search'
 import SearchResult from "./Components/SearchResult";
 import New_Release from "./Components/New_Release";
+
+import { useMainContext } from "@/utils/context";
 
 import search from '../utils/search'
 import validate_token from "@/utils/validate_token";
@@ -10,12 +12,13 @@ import handleChange from "@/utils/handleChange";
 
 export default function App(){
 
-    const [searchObj, setSearchObj] = useState({
-        type: 'show',
-        query: ''
-    })
+    const {searchResult, setSearchResult, searchObj, setSearchObj} = useMainContext()
 
-    const [searchResult, setSearchResult] = useState({})
+    // const [searchObj, setSearchObj] = useState({
+    //     type: 'show',
+    //     query: ''
+    // })
+
     const [selectCategories,setSelectCategories]= useState([])  
 
     const categories = Object.keys(searchResult)
@@ -24,9 +27,10 @@ export default function App(){
     useEffect(()=>{
 
         if(searchObj.query === ''){
-            setSearchResult({})
+            // setSearchResult({})
             return;
         }
+
         console.log('effect query', searchObj.query)
 
         const timeout = setTimeout(() => {

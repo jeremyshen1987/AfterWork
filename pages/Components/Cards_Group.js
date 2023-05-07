@@ -19,15 +19,20 @@ function Wrapper_Synopsis({children, name}){
 
 export default function Cards_Group({type, items}){
 
+    if(typeof items === 'undefined' || items === null){
+        return
+    }
+
     return(
 
 
-        <Wrapper_Synopsis name={type}>
+        <Wrapper_Synopsis key={type} name={type}>
 
-            {items.length === 0 ? <h3>Sorry, nothing found!</h3> : items.map((item, idx) => {
+            {items.map((item, idx) => {
                 return(
                     <>
-                        <Link href={`${item.type}/${item.id}`} >
+                        {/* target="_blank" */}
+                        <Link key={idx} href={`/${item.type}/${item.id}`} >
                             <Card_Overview key={idx} type={type} item={item}/>
                         </Link>
                     

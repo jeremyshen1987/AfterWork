@@ -4,6 +4,10 @@ import upperCase from "@/utils/upperCase"
 
 export default function Playlist_Page({data}){
 
+    if(typeof data === 'undefined' || data === null){
+        return
+    }
+
     try{
 
         console.log('playlist data', data)

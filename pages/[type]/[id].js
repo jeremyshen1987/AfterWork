@@ -1,18 +1,20 @@
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import Album_Page from "../Components/Album_Page";
+import Artist_Page from "../Components/Artist_Page";
+import Track_Page from "../Components/Track_Page";
 import Playlist_Page from "../Components/Playlist_Page";
+
 import validate_token from "@/utils/validate_token";
 import search_by_id from "@/utils/search_by_id";
-import Artist_Page from "../Components/Artist_Page";
+
 
 export default function Album_Artist_Playlist(){
     
     const router = useRouter()
     const {type, id} = router.query
 
-    const [data, setData] = useState({})
-
+    const [data, setData] = useState(null)
 
     useEffect(()=>{
 
@@ -25,14 +27,14 @@ export default function Album_Artist_Playlist(){
             })()
 
         }
-    }, [type])
+    }, [type, id])
+
 
     switch(type){
 
         case 'album':
 
             return (
-
                 <div className="main_container">
                     <Album_Page data={data}/>
                 </div>
@@ -47,21 +49,24 @@ export default function Album_Artist_Playlist(){
             )
         
         case 'artist':
-            console.log('artist cat', data)
             return(
                 <div className="main_container">
-                    <Artist_Page data={data}/>
+                    <Artist_Page key={id} data={data}/>
                 </div>
             )
-        
+        case 'track':
+            return(
+                <div className="main_container">
+                    <Track_Page key={id} data={data}/>
+                </div>
+            )
         default:
             return null
     }
 
-    // if(type === 'album'|| type === 'playlist'){
-
     
-    // }
+
+
 
 
 }

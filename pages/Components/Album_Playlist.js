@@ -2,6 +2,10 @@ import Link from "next/link"
 import conversion_ms_minute from "@/utils/conversion_ms_minute"
 
 export default function Playlist({type, tracks}){
+
+    if(typeof tracks === 'undefined' || tracks === null){
+        return
+    }
     
     const items = tracks.items
 
