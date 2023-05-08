@@ -22,11 +22,9 @@ export default function App(){
     useEffect(()=>{
 
         if(searchObj.query === ''){
-            // setSearchResult({})
+            setSearchResult({})
             return;
         }
-
-        console.log('effect query', searchObj.query)
 
         const timeout = setTimeout(() => {
             validate_token(search, searchObj, setSearchResult)
@@ -47,7 +45,6 @@ export default function App(){
     return(
         <>
        
-        {/* <div className="main_container"> */}
             <Search categories={categories} selectCategories={selectCategories} setSelectCategories={setSelectCategories} 
                     handleChange={(e)=>handleChange(e, searchObj, setSearchObj)} />
 
@@ -55,8 +52,6 @@ export default function App(){
             
             
             {searchObj.query === '' ? <New_Release /> : null}
-
-        {/* </div> */}
 
         </>
     )

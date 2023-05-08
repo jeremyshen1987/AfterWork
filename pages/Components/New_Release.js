@@ -1,9 +1,10 @@
 import { useState,useEffect } from "react"
-
+import Loading from "./Loading"
 import Cards_Group from "./Cards_Group"
 
 import validate_token from "@/utils/validate_token"
 import new_release from "@/utils/newRelease"
+
 
 
 export default function New_Release() {
@@ -29,6 +30,11 @@ export default function New_Release() {
         
     }, [])
 
+    if(newRelease.length === 0){
+        return(
+            <Loading />
+        )
+    }
 
     return(
         // <div className="main_container">

@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Loading from "./Components/Loading";
 import { useMainContext } from "@/utils/context";
 import sortLike from "@/utils/sortLikes";
 import upperCase from "@/utils/upperCase";
@@ -17,7 +18,7 @@ export default function Liked(){
 
     if(items.length === 0){
         return(
-            <h1 className="central_display">No liked item, yet</h1>
+            <Loading words="No liked item, yet"/>
         )
     }
 
