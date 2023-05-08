@@ -4,22 +4,22 @@ import { useMainContext } from "@/utils/context";
 import Button_Round from "./Button_Round";
 import changeCategories from "@/utils/changeCategories";
 import overlay_on from "@/utils/overlay_on";
+import overlay_auto_shut from "@/utils/overlay_auto_shut";
 import Suggestion_Panel from "./Suggestion_Panel";
 import handleClickEvent from "@/utils/handleClickEvent";
 
 export default function Search({categories, selectCategories, setSelectCategories, handleChange}){
 
 
-    const {searchObj} = useMainContext()
+    const {searchObj, setSearchObj, setSearchResult} = useMainContext()
 
-    // avoid useRef inside useEffect since it return undefined sometime
+    // didn't use useRef inside useEffect since it return undefined sometime
     useEffect(()=>{
 
         const overlay = document.getElementById('overlay')
         const panel = document.getElementById('panel')
-
-        console.log('effect: ', overlay.current)
         window.addEventListener('click', (e)=>handleClickEvent(e, overlay, panel))
+
         return()=>{window.removeEventListener('click', handleClickEvent)}
     }, [])
 
@@ -30,8 +30,9 @@ export default function Search({categories, selectCategories, setSelectCategorie
 
     return(
         <>
-            <div className="flex center flex_width">
-                <input name="query" value={searchObj.query} onChange={handleChange} onFocus={(e)=>overlay_on(e, overlay, panel)}  maxLength="24" type="text" placeholder="Search Albums, Songs, Artists, Playlists..." className="flex1 round_btn search_bar" />
+            <div className="flex center flex_width search_bar relative">
+                <input className="flex1 round_btn search_do_not_touch" name="query" value={searchObj.query} onChange={handleChange} onFocus={(e)=>overlay_on(e, overlay, panel)}  maxLength="24" type="text" placeholder="Search Albums, Songs, Artists, Playlists..."  />
+                {searchObj.query === '' ? null : <span className="clear_search" onClick={()=>{setSearchObj({...searchObj, query: ''}), setSearchResult({})}}>\uD83D\uDDD9</span>}
             </div>
 
             <Suggestion_Panel/>

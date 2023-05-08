@@ -5,17 +5,20 @@ const MainContext = createContext();
 
 export function MainProvider({ children }) {
 
-    const [searchResult, setSearchResult] = useState({})
+
+    // to do: integrate ticketmaster show
     const [searchObj, setSearchObj] = useState({
         type: 'show',
         query: ''
     })
 
+    const [searchResult, setSearchResult] = useState({})
+
     const [likes, setLikes] = useState([{
         type: null,
         name: null,
         id: null,
-        url: null
+        img_url: null
     }])
 
     return (

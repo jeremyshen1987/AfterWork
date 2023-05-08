@@ -25,7 +25,7 @@ export default function Playlist_Page({data}){
                         
                      
                         <div key={owner.id}>
-                            <p className="track_artist">{owner.display_name}</p>
+                            <p className="track_artist">Created by: {owner.display_name}</p>
                         </div>
              
                             

@@ -14,12 +14,13 @@ export default function Album_Page({data}){
 
     try{
         const {artists, external_urls, images, release_date, name, tracks, total_tracks, type, id} = data
+        const img_url = images[0].url
 
         return(
             <>
                 <div key={id} className="album_overview">
 
-                    <img src={images[0].url} className="album_img_small"></img>
+                    <img src={img_url} className="album_img_small"></img>
 
                     <div className="album_detail">
                         <p className="album_type">{upperCase(type)}</p>
@@ -42,8 +43,8 @@ export default function Album_Page({data}){
                             <span>{(new Date(release_date)).getFullYear()}</span>
                             <span style={{margin: '0 5px'}}>•</span>
                             <span>{total_tracks} songs</span>
-                            <button onClick={()=>toggleLike(type, name, id, likes, setLikes)} className="round_btn like_btn">
-                                {likes.filter(like => like.id === id).length > 0 ? 'Unlike' : 'I Like this album'}
+                            <button onClick={()=>toggleLike(type, name, id, img_url, likes, setLikes)} className="round_btn like_btn">
+                                {likes.filter(like => like.id === id).length > 0 ? 'Unlike' : 'Like this album'}
                             </button>
                         </div>
                         

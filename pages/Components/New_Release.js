@@ -31,7 +31,9 @@ export default function New_Release() {
 
 
     return(
-        <Cards_Group key='new_release' type='New Release' items={newRelease}/>
+        // <div className="main_container">
+            <Cards_Group key='new_release' type='New Release' items={newRelease}/>
+        // </div>
     )
 
 

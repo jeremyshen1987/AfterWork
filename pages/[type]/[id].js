@@ -35,30 +35,21 @@ export default function Album_Artist_Playlist(){
         case 'album':
 
             return (
-                <div className="main_container">
-                    <Album_Page data={data}/>
-                </div>
-        
+                <Album_Page data={data}/>
             )
             
         case 'playlist':
             return(
-                <div className="main_container">
-                    <Playlist_Page data={data}/>
-                </div>
+                <Playlist_Page data={data}/>
             )
         
         case 'artist':
             return(
-                <div className="main_container">
-                    <Artist_Page key={id} data={data}/>
-                </div>
+                <Artist_Page key={id} data={data}/>
             )
         case 'track':
             return(
-                <div className="main_container">
-                    <Track_Page key={id} data={data}/>
-                </div>
+                 <Track_Page key={id} data={data}/>
             )
         default:
             return null

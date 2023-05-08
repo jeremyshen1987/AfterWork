@@ -1,16 +1,65 @@
+import Link from "next/link";
 import { useMainContext } from "@/utils/context";
+import sortLike from "@/utils/sortLikes";
+import upperCase from "@/utils/upperCase";
 
 
 export default function Liked(){
 
+    const {likes, setLikes}= useMainContext()
 
-    const {num, setNum}= useMainContext()
+    const items = likes.filter(like => like.id !== null)
+
+    const sortedArr = sortLike(items, 'type')
+    const typeArr = Object.keys(sortedArr)
+
+    console.log(sortedArr)
+
+    if(items.length === 0){
+        return(
+            <h1 className="central_display">No liked item, yet</h1>
+        )
+    }
 
     return(
-        <div className="main_container">
-            <h1>you are number</h1>
-            <button onClick={()=>{setNum(5)}}>click</button>
-        </div>
+            <div className="container_like_items">   
+                {typeArr.map(type => {
+                    return(
+                        <>
+                            <h1>{upperCase(type)}</h1>
+                    
+                            {sortedArr[type].map((i, idx) => {
+
+                                const id = i.id
+                                const url = `/${type}/${id}`
+
+                                return(
+                                    
+
+                                        <div key={idx} className='wrapper_like_item relative'>
+
+                                            <img src={i.img_url} className='img_tiny'></img>
+                                            <Link href={url} key={idx} className="flex1">
+                                                <div className='like_item_text'>
+
+                                                    <p className='grey'>{upperCase(type)}</p>   
+                                                    <p className='album_link_text'>{i.name}</p>  
+
+                                                </div>
+                                            </Link>
+                                            <span className="clear_like" onClick={()=>{setLikes(items.filter(i => i.id !== id))}}>\uD83D\uDDD9</span>
+
+                                        </div>
+
+                                    
+                                )
+                            })}
+                            
+                        </>
+                    )
+                })}
+           </div>
     )
 
 }
+

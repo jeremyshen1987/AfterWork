@@ -19,10 +19,8 @@
   --background-unsafe-for-small-text-press: #121212;
   --text-base: #fff;
   --text-subdued: #a7a7a7;
-  --text-bright-accent: #1ed760;
   --text-negative: #f15e6c;
   --text-warning: #ffa42b;
-  --text-positive: #1ed760;
   --text-announcement: #3d91f4;
   --essential-base: #fff;
   --essential-bright-accent: #1ed760;
@@ -33,6 +31,8 @@
   --decorative-base: #fff;
   --decorative-subdued: #292929;
 
+  --text-bright-accent: #1ed760;
+  --text-positive: #1ed760;
   --song-hover: hsla(0,0%,100%,.3);
   --essential-subdued: #727272;
   --search-bar-width-bottom: clamp(280px, 85vw, 800px)
@@ -53,6 +53,12 @@ body {
   overflow-x: hidden;
 }
 
+
+.menu_svg {
+  max-width: 180px;
+  height: auto;
+}
+
 .main_tabs {
   position: fixed;
   top: 0;
@@ -62,16 +68,66 @@ body {
   flex-direction: column;
   height: 100vh;
   align-items: center;
-  gap: clamp(25px, 5vw, 100px);
+  gap: clamp(15px, 4vw, 50px);
   background-color: var( --background-highlight);
 }
-
+/* gap: clamp(25px, 5vw, 100px); */
 
 .main_tabs li {
   list-style-type: none;
   cursor: pointer;
   padding: 20px;
-  border: solid 1px black;
+  /* border: solid 1px black; */
+  width: 100%;
+  text-align: center;
+}
+
+.main_tabs a{
+  display: block;
+  width: 100%;
+  padding: 20px;
+  text-align: center;
+}
+
+.main_tabs a:hover {
+  color: var(--essential-bright-accent);
+
+}
+
+.container_logo {
+  margin-top: 20px;
+}
+
+.clear_search {
+  position: absolute;
+  right: 5px;
+  top: -3px;
+  padding: 10px 15px;
+  color: red;
+  z-index: 13;
+}
+
+.clear_like {
+  position: absolute;
+  top: -3px;
+  left: 5px;
+  padding: 10px;
+  color: red;
+}
+
+.num_like {
+  position: absolute;
+  top: 5px;
+  right: 33%;
+  padding: 5px 10px;
+  color: white;
+  background-color: var(--essential-bright-accent);
+  border-radius: 50%;
+}
+
+.clear_search:hover, .clear_like:hover {
+  cursor: pointer;
+  color: red;
 }
 
 a {
@@ -81,6 +137,7 @@ a {
 
 .wrapper_card_group {
   padding: 10px;
+  margin-top: 50px;
 }
 
 .wrapper_card_group a{
@@ -118,7 +175,7 @@ a {
   font-size: 4rem;
 }
 
-.album_year {
+.album_year, .like_artist, .like_song{
   display: flex;
   align-items: center;
 }
@@ -168,6 +225,7 @@ a {
 .category_name {
   margin: 10px;
   font-size: 1.6rem;
+  color: var(--song-hover);
 }
 
 .card_overview {
@@ -199,13 +257,13 @@ a {
   text-overflow: ellipsis;
 }
 
-.track_album_container{
+.track_album_container, .wrapper_like_item{
   display: flex;
   gap: 10px;
   padding: 24px 36px;
 }
 
-.track_album_text{
+.track_album_text, .like_item_text{
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -214,7 +272,11 @@ a {
   border-radius: 15px;
 }
 
-.track_album_text:hover {
+.like_item_text {
+  height: 100%;
+}
+
+.track_album_text:hover, .like_item_text:hover {
   background-color: var(--song-hover);
 }
 
@@ -222,6 +284,7 @@ a {
 .main_container {
   margin-left: clamp(240px, 15vw, 360px)
 }
+
 
 .relative {
   position: relative
@@ -259,9 +322,26 @@ a {
   gap: 20px
 }
 
+.central_display {
+  width: 100%;
+  min-height: 90vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.container_like_items {
+  padding: 36px 16px;
+}
+
 .flex_width {
   width: clamp(280px, 60vw, 800px);
-  margin: 15px auto;
+  margin: 20px auto;
+}
+
+.suggestion_panel{
+  width: clamp(280px, 60vw, 800px);
+  margin: 20px auto;
 }
 
 .border {
@@ -354,12 +434,14 @@ button {
   padding: 10px 5px;
 }
 
-.panel * {
-  color: black;
+.panel h4 {
+  color: grey;
+  padding: 8px;
 }
 
-.panel h2 {
-  padding: 8px;
+.panel li {
+  color: black;
+  font-size: 1.5rem;
 }
 
 .panel li {
@@ -390,6 +472,10 @@ li {
     color-scheme: dark;
   } */
 
+  .container_logo {
+    display: none;
+  }
+
   .main_tabs {
     position: fixed;
     top: auto;
@@ -397,9 +483,9 @@ li {
     display: flex;
     flex-direction: row;
     width: 100vw;
-    height: clamp(70px, 12vh, 100px);
+    height: clamp(30px, 10vh, 100px);
     justify-content: center;
-    gap: clamp(25px, 5vw, 100px);
+    gap: clamp(30px, 5vw, 100px);
   }
 
   .main_container {
@@ -409,6 +495,10 @@ li {
 
   .wrapper_card {
     flex-direction: column;
+  }
+
+  .wrapper_card_group {
+    margin-top: 0;
   }
 
   .card_overview {
@@ -439,7 +529,11 @@ li {
 
   .flex_width {
     width: var(--search-bar-width-bottom);
-    margin: 15px auto;
+    
+  }
+
+  .margin_auto_do_not_touch {
+    margin: 30px auto;
   }
 
   .album_overview {
@@ -463,6 +557,7 @@ li {
   .album_detail h1 {
     font-size: 2rem;
   }
-
-
+  .wrapper_like_item{
+    padding: 24px 10px 10px 16px;
+  }
 }

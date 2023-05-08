@@ -1,8 +1,11 @@
 import Cards_Group from './Cards_Group'
 import upperCase from "@/utils/upperCase"
+import toggleLike from '@/utils/toggleLike'
+import { useMainContext } from "@/utils/context"
 
 export default function Artist_Page({data}){
 
+    const {likes, setLikes} = useMainContext()
 
     if(typeof data === 'undefined' || data === null){
         return
@@ -10,16 +13,15 @@ export default function Artist_Page({data}){
 
     try{
 
-        console.log('artist data', data)
         const {artist_info, artist_album, related_artist} = data
-
         const {external_urls, images, followers, id, name, type} = artist_info
+        const img_url = images[0].url
 
         return(
             <>
             <div key={id} className="album_overview">
     
-                <img src={images[0].url} className="album_img_small round_img"></img>
+                <img src={img_url} className="album_img_small round_img"></img>
     
                 <div className="album_detail">
                     <p className="album_type">{upperCase(type)}</p>
@@ -27,8 +29,11 @@ export default function Artist_Page({data}){
                     
     
                         
-                    <div>
+                    <div className='like_artist'>
                         <span>{followers.total} Likes</span>
+                        <button onClick={()=>toggleLike(type, name, id, img_url, likes, setLikes)} className="round_btn like_btn">
+                                {likes.filter(like => like.id === id).length > 0 ? 'Unlike' : 'Like this artist'}
+                        </button>
                     </div>
                     
                 </div>

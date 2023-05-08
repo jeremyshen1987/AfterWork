@@ -1,4 +1,4 @@
-export default function toggleLike(type, name, id, likes, setLikes){
+export default function toggleLike(type, name, id, img_url, likes, setLikes){
 
     console.log('toggle', id)
 
@@ -15,7 +15,8 @@ export default function toggleLike(type, name, id, likes, setLikes){
     const likeObj = {
         type: type,
         name: name,
-        id: id
+        id: id,
+        img_url: img_url
     }
 
     console.log('obj', likeObj)

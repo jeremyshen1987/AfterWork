@@ -14,11 +14,6 @@ export default function App(){
 
     const {searchResult, setSearchResult, searchObj, setSearchObj} = useMainContext()
 
-    // const [searchObj, setSearchObj] = useState({
-    //     type: 'show',
-    //     query: ''
-    // })
-
     const [selectCategories,setSelectCategories]= useState([])  
 
     const categories = Object.keys(searchResult)
@@ -52,15 +47,17 @@ export default function App(){
     return(
         <>
        
-        <div className="main_container">
+        {/* <div className="main_container"> */}
             <Search categories={categories} selectCategories={selectCategories} setSelectCategories={setSelectCategories} 
                     handleChange={(e)=>handleChange(e, searchObj, setSearchObj)} />
 
             <SearchResult results={searchResult} selectCategories={selectCategories}/>
             
+            
             {searchObj.query === '' ? <New_Release /> : null}
 
-        </div>
+        {/* </div> */}
+
         </>
     )
 }
