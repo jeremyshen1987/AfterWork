@@ -11,7 +11,6 @@ export default function New_Release() {
 
     const [newRelease, setNewRelease] = useState([])
 
-
     useEffect(()=>{
 
 
@@ -30,17 +29,21 @@ export default function New_Release() {
         
     }, [])
 
+
+
     if(newRelease.length === 0){
         return(
             <Loading />
         )
     }
 
-    return(
-        // <div className="main_container">
-            <Cards_Group key='new_release' type='New Release' items={newRelease}/>
-        // </div>
-    )
+    if(typeof window !== 'undefined'){
+        const uid = window.crypto.randomUUID()
+
+        return(
+            <Cards_Group key={uid} type='New Release' items={newRelease}/>
+        )
+    }
 
 
 }

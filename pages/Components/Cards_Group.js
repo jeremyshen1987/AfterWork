@@ -31,7 +31,6 @@ export default function Cards_Group({type, items}){
             {items.map((item, idx) => {
                 return(
                     <>
-                        {/* target="_blank" */}
                         <Link key={idx} href={`/${item.type}/${item.id}`} >
                             <Card_Overview key={idx} type={type} item={item}/>
                         </Link>
