@@ -102,7 +102,15 @@ body {
 }
 
 .container_logo {
+  position: relative;
+  width: 100%;
   margin-top: 20px;
+}
+
+.container_logo h4 {
+  position: absolute;
+  top: 20px;
+  left: 40px;
 }
 
 .clear_search {
