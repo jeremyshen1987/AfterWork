@@ -48,7 +48,8 @@ export default function App(){
             <Search categories={categories} selectCategories={selectCategories} setSelectCategories={setSelectCategories} 
                 handleChange={(e)=>handleChange(e, searchObj, setSearchObj)} />
 
-            <Recently_Viewed />
+            {searchObj.query === '' ? <Recently_Viewed /> : null}
+            
             <SearchResult results={searchResult} selectCategories={selectCategories}/>
             
             {searchObj.query === '' ? <New_Release /> : null}
