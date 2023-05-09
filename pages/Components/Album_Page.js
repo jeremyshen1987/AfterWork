@@ -1,12 +1,15 @@
+import { useEffect } from "react"
 import Link from "next/link"
 import { useMainContext } from "@/utils/context"
 import Playlist from "./Album_Playlist"
 import upperCase from "@/utils/upperCase"
 import toggleLike from "@/utils/toggleLike"
+import setHistory from "@/utils/setHistory"
 
 export default function Album_Page({data}){
 
     const {likes, setLikes} = useMainContext()
+
 
     if(typeof data === 'undefined' || data === null){
         return
@@ -15,6 +18,8 @@ export default function Album_Page({data}){
     try{
         const {artists, external_urls, images, release_date, name, tracks, total_tracks, type, id} = data
         const img_url = images[0].url
+
+        setHistory(type, name, id, img_url)
 
         return(
             <>

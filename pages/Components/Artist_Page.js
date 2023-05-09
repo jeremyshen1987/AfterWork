@@ -1,6 +1,7 @@
 import Cards_Group from './Cards_Group'
 import upperCase from "@/utils/upperCase"
 import toggleLike from '@/utils/toggleLike'
+import setHistory from '@/utils/setHistory'
 import { useMainContext } from "@/utils/context"
 
 export default function Artist_Page({data}){
@@ -16,6 +17,9 @@ export default function Artist_Page({data}){
         const {artist_info, artist_album, related_artist} = data
         const {external_urls, images, followers, id, name, type} = artist_info
         const img_url = images[0].url
+
+        setHistory(type, name, id, img_url)
+
 
         return(
             <>

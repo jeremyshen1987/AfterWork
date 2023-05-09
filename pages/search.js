@@ -9,6 +9,7 @@ import { useMainContext } from "@/utils/context";
 import search from '../utils/search'
 import validate_token from "@/utils/validate_token";
 import handleChange from "@/utils/handleChange";
+import Recently_Viewed from "./Components/Recently_Viewed";
 
 export default function App(){
 
@@ -45,10 +46,10 @@ export default function App(){
         <>
        
             <Search categories={categories} selectCategories={selectCategories} setSelectCategories={setSelectCategories} 
-                    handleChange={(e)=>handleChange(e, searchObj, setSearchObj)} />
+                handleChange={(e)=>handleChange(e, searchObj, setSearchObj)} />
 
+            <Recently_Viewed />
             <SearchResult results={searchResult} selectCategories={selectCategories}/>
-            
             
             {searchObj.query === '' ? <New_Release /> : null}
 
