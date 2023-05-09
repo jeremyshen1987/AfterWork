@@ -3,6 +3,7 @@ import Card_Overview from "./Card_Overview"
 
 function Wrapper_Synopsis({children, name}){
 
+
     return(
         <div className="wrapper_card_group">
             <div className="category_name">{name}</div>
@@ -23,24 +24,29 @@ export default function Cards_Group({type, items}){
         return
     }
 
-    return(
+    if(typeof window !== 'undefined'){
+
+        return(
 
 
-        <Wrapper_Synopsis key={type} name={type}>
+            <Wrapper_Synopsis key={window.crypto.randomUUID()} name={type}>
+    
+                {items.map((item, idx) => {
+                    return(
+                        <>
+                            <Link key={window.crypto.randomUUID()} href={`/${item.type}/${item.id}`} >
+                                <Card_Overview key={window.crypto.randomUUID()} type={type} item={item}/>
+                            </Link>
+                        
+                        </>
+                    )
+                })}
+                
+            </Wrapper_Synopsis>
+    
+        )
+    }
 
-            {items.map((item, idx) => {
-                return(
-                    <>
-                        <Link key={idx} href={`/${item.type}/${item.id}`} >
-                            <Card_Overview key={idx} type={type} item={item}/>
-                        </Link>
-                    
-                    </>
-                )
-            })}
-            
-        </Wrapper_Synopsis>
 
-    )
 
 }

@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { useContext, useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import Search from './Components/Search'
 import SearchResult from "./Components/SearchResult";
 import New_Release from "./Components/New_Release";
@@ -35,7 +35,6 @@ export default function App(){
         return ()=>{clearTimeout(timeout)}
     
     }, [searchObj.query])
-   
 
     if (typeof window !== 'undefined'){
         validate_token()

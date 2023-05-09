@@ -12,10 +12,9 @@ export default function App({ Component, pageProps }) {
       <MainProvider >
         <Menu />
           <div className="main_container">
-
+            
             <Component {...pageProps} />
           </div>
-        
       </MainProvider>
 
     </>

@@ -11,7 +11,7 @@ import handleClickEvent from "@/utils/handleClickEvent";
 export default function Search({categories, selectCategories, setSelectCategories, handleChange}){
 
 
-    const {searchObj, setSearchObj, setSearchResult} = useMainContext()
+    const {searchObj, setSearchObj, setSearchResult, focusInput, setFocusInput} = useMainContext()
 
     // didn't use useRef inside useEffect since it return undefined sometime
     useEffect(()=>{
@@ -20,7 +20,7 @@ export default function Search({categories, selectCategories, setSelectCategorie
         const panel = document.getElementById('panel')
         window.addEventListener('click', (e)=>handleClickEvent(e, overlay, panel))
 
-        return()=>{window.removeEventListener('click', handleClickEvent)}
+        return ()=>{window.removeEventListener('click', handleClickEvent)}
     }, [])
 
     if(typeof categories === 'undefined' || categories === null){
@@ -31,7 +31,7 @@ export default function Search({categories, selectCategories, setSelectCategorie
     return(
         <>
             <div className="flex center flex_width search_bar relative">
-                <input className="flex1 round_btn search_do_not_touch" name="query" value={searchObj.query} onChange={handleChange} onFocus={(e)=>overlay_on(e, overlay, panel)}  maxLength="24" type="text" placeholder="Search Albums, Songs, Artists, Playlists..."  />
+                <input className="flex1 round_btn search_do_not_touch" id="search" name="query" value={searchObj.query} onChange={handleChange} onFocus={(e)=>overlay_on(e, overlay, panel)}  maxLength="24" type="text" placeholder="Search Albums, Songs, Artists, Playlists..."  />
                 {searchObj.query === '' ? null : <span className="clear_search" onClick={()=>{setSearchObj({...searchObj, query: ''}), setSearchResult({})}}>\uD83D\uDDD9</span>}
             </div>
 

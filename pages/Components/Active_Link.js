@@ -6,7 +6,8 @@ export default function Active_Link({children, href}){
     const highlight = router.asPath === href ? 'brightWhite' : null
 
     function toRoute(e){
-        // e.preventDefault()
+        // to prevent state loss. Arghhh...
+        e.preventDefault()
         router.push(href)
     }
 
