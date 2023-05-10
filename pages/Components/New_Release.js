@@ -1,4 +1,5 @@
 import { useState,useEffect } from "react"
+import { useMainContext } from "@/utils/context"
 import Loading from "./Loading"
 import Cards_Group from "./Cards_Group"
 
@@ -9,7 +10,7 @@ import new_release from "@/utils/newRelease"
 
 export default function New_Release() {
 
-    const [newRelease, setNewRelease] = useState([])
+    const {newRelease, setNewRelease} = useMainContext()
 
     useEffect(()=>{
 

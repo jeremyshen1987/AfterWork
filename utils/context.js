@@ -5,6 +5,7 @@ const MainContext = createContext();
 
 export function MainProvider({ children }) {
 
+    const [newRelease, setNewRelease] = useState([])
 
     // to do: integrate ticketmaster show
     const [searchObj, setSearchObj] = useState({
@@ -22,7 +23,7 @@ export function MainProvider({ children }) {
     }])
 
     return (
-        <MainContext.Provider value={{searchResult, setSearchResult, searchObj, setSearchObj, likes, setLikes}}>
+        <MainContext.Provider value={{newRelease, setNewRelease, searchResult, setSearchResult, searchObj, setSearchObj, likes, setLikes}}>
             {children}
         </MainContext.Provider>
     );

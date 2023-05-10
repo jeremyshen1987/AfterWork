@@ -32,7 +32,7 @@ export default function Recently_Viewed(){
                         const {type, name, id, img_url} = li
                         return(
 
-                            <Link href={`/${type}/${id}`}>
+                            <Link key={id} href={`/${type}/${id}`}>
                                 <div key={id} className="card_overview">
                                     <img src={img_url} className={type === 'Artists' || type === 'Artist' ? 'round_img img_small' : 'img_small'}></img>
                         
