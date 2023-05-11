@@ -1,15 +1,10 @@
 
 export default async function getItems(req, res){
-
-    console.log('getItem route')
     
     const body = JSON.parse(req.body)
     const {token} = body
 
     const {category, id} = req.query
-
-    
-
 
     if(category === 'artist'){
 

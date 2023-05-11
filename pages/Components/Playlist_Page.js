@@ -12,12 +12,13 @@ export default function Playlist_Page({data}){
 
         console.log('playlist data', data)
         const {name, external_urls, followers, images, owner, tracks, type, id} = data
+        const img_url = images[0].url
 
         return(
             <>
                 <div key={id} className="album_overview">
 
-                    <img src={images[0].url} className="album_img_small"></img>
+                    <img src={img_url} className="album_img_small"></img>
 
                     <div className="album_detail">
                         <p className="album_type">{upperCase(type)}</p>
@@ -40,7 +41,7 @@ export default function Playlist_Page({data}){
     
                 </div>
     
-                <Playlist type={type} tracks={tracks}/>
+                <Playlist type={type} tracks={tracks} img_url={img_url} />
             </>
     
         )

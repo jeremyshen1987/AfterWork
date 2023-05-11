@@ -202,6 +202,11 @@ a {
   border: solid 2px gold;
 }
 
+#like_playlist_track {
+  display: none;
+  z-index: 20;
+}
+
 .playlist {
   display: flex;
   align-items: center;
@@ -240,7 +245,9 @@ a {
 
 .duration {
   height: 100%;
-
+  display: flex;
+  align-items: center;
+  gap: 20px;
 }
 
 .category_name {

@@ -61,7 +61,7 @@ export default function Album_Page({data}){
     
                 </div>
     
-                <Playlist type={type} tracks={tracks}/>
+                <Playlist type={type} tracks={tracks} img_url={img_url} />
             </>
     
         )
