@@ -14,10 +14,6 @@ export default async function newRelease(req, res){
 
     const results = await response.json()
 
-    res.json({
-        results
-    })
-
-    
+    res.json(results)
 
 }

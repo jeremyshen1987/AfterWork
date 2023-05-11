@@ -18,7 +18,9 @@ export default function Liked(){
 
     if(items.length === 0){
         return(
-            <Loading words="No liked item, yet"/>
+            <>
+                <Loading words="No liked item, yet"/>
+            </>
         )
     }
 

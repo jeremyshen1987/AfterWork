@@ -1,7 +1,5 @@
 export default async function search_by_id(token, type, id){
 
-    console.log('search by id')
-
     const response = await fetch(`/api/${type}/${id}`, {
         method: 'POST',
         body: JSON.stringify({

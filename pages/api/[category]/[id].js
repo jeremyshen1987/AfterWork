@@ -13,7 +13,6 @@ export default async function getItems(req, res){
 
     if(category === 'artist'){
 
-        console.log('cat and id: ', category, id)
 
         const artist_info = await fetch(`https://api.spotify.com/v1/${category}s/${id}`, {
             method: 'GET',

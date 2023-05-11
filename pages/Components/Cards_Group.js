@@ -31,7 +31,7 @@ export default function Cards_Group({type, items}){
 
             <Wrapper_Synopsis key={window.crypto.randomUUID()} name={type}>
     
-                {items.map((item, idx) => {
+                {items.map((item) => {
                     return(
                         <>
                             <Link key={window.crypto.randomUUID()} href={`/${item.type}/${item.id}`} >

@@ -9,9 +9,7 @@ export default async function new_release(token){
         })
     })
 
-    const res_json = await response.json();
-    const {results} = res_json
-
-    console.log('album :', results.albums);
+    const results = await response.json();
+   
     return results.albums;
 }

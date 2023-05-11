@@ -18,6 +18,7 @@ export default function Playlist({type, tracks}){
                     const {name, id, artists, track_number, duration_ms } = item
     
                     return(
+                        <Link key={id} href={`/track/${id}`}>
                         <div key={id} className="playlist">
                             <span className="track_num">{track_number}</span>
                             
@@ -44,6 +45,7 @@ export default function Playlist({type, tracks}){
     
                             </div>
                         </div>
+                        </Link>
                     )
                 })}
             </div>

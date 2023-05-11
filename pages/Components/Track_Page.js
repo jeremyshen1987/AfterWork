@@ -3,6 +3,8 @@ import { useMainContext } from '@/utils/context'
 import Cards_Group from './Cards_Group'
 import upperCase from "@/utils/upperCase"
 import toggleLike from '@/utils/toggleLike'
+import conversion_ms_minute from '@/utils/conversion_ms_minute'
+import setColor from '@/utils/setColor'
 
 export default function Track_Page({data}){
 
@@ -20,6 +22,8 @@ export default function Track_Page({data}){
         const {images, total_tracks, release_date} = album
         const img_url = images[0].url
 
+        setColor(img_url, 'album_detail')
+
         return(
             <>
             
@@ -28,7 +32,7 @@ export default function Track_Page({data}){
 
                 <img src={img_url} className="album_img_small"></img>
         
-                <div className="album_detail">
+                <div className="album_detail" id='album_detail'>
                     <p className="album_type">{upperCase(type)}</p>
                     <h1>{name}</h1>
                     
@@ -47,7 +51,7 @@ export default function Track_Page({data}){
                     <div className='like_song'>
                         <span>{(new Date(release_date)).getFullYear()}</span>
                         <span style={{margin: '0 5px'}}>•</span>
-                        <span>{total_tracks} songs</span>
+                        <span>{conversion_ms_minute(duration_ms)}</span>
                         <button onClick={()=>toggleLike(type, name, id, img_url, likes, setLikes)} className="round_btn like_btn">
                                 {likes.filter(like => like.id === id).length > 0 ? 'Unlike' : 'Like this album'}
                         </button>

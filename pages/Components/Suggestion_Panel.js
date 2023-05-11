@@ -10,8 +10,8 @@ const Suggestion_Panel = forwardRef(function Suggestion_Panel(props, ref){
 
                 <h4>Album</h4>
                 <ul>
-                    <Link href='/album/6WWL32UxPnjrIWlgLdzoir'>
-                        <li className="suggest_item"><b>Elden Ring</b></li>
+                    <Link href='/album/3B61kSKTxlY36cYgzvf3cP'>
+                        <li className="suggest_item"><b>Interstellar</b></li>
                     </Link>
                 </ul>
 

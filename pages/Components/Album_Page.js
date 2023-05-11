@@ -5,6 +5,7 @@ import Playlist from "./Album_Playlist"
 import upperCase from "@/utils/upperCase"
 import toggleLike from "@/utils/toggleLike"
 import setHistory from "@/utils/setHistory"
+import setColor from "@/utils/setColor"
 
 export default function Album_Page({data}){
 
@@ -21,13 +22,16 @@ export default function Album_Page({data}){
 
         setHistory(type, name, id, img_url)
 
+        // set background color based on album color
+        setColor(img_url, "album_detail")
+
         return(
             <>
                 <div key={id} className="album_overview">
 
                     <img src={img_url} className="album_img_small"></img>
 
-                    <div className="album_detail">
+                    <div className="album_detail" id="album_detail">
                         <p className="album_type">{upperCase(type)}</p>
                         <h1>{name}</h1>
                         

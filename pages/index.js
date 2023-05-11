@@ -5,8 +5,6 @@ import styles from '@/styles/Home.module.css'
 import New_Release from './Components/New_Release'
 import Recently_Viewed from './Components/Recently_Viewed'
 
-const inter = Inter({ subsets: ['latin'] })
-
 export default function Home() {
   return (
     <>
@@ -15,3 +13,4 @@ export default function Home() {
     </>
   )
 }
+
