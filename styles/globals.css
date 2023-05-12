@@ -73,13 +73,11 @@ body {
   gap: clamp(15px, 4vw, 50px);
   background-color: var( --background-highlight);
 }
-/* gap: clamp(25px, 5vw, 100px); */
 
 .main_tabs li {
   list-style-type: none;
   cursor: pointer;
   padding: 20px;
-  /* border: solid 1px black; */
   width: 100%;
   text-align: center;
 }
@@ -115,8 +113,8 @@ body {
 
 .clear_search {
   position: absolute;
-  right: 5px;
-  top: -3px;
+  right: -5px;
+  top: -7px;
   padding: 10px 15px;
   color: red;
   z-index: 13;
@@ -132,8 +130,8 @@ body {
 
 .num_like {
   position: absolute;
-  top: 5px;
-  right: 33%;
+  top: 15%;
+  right: 35%;
   padding: 5px 10px;
   color: white;
   background-color: var(--essential-bright-accent);
@@ -522,6 +520,10 @@ li {
     margin-bottom: clamp(70px, 12vh, 100px);
   }
 
+  .suggestion_panel {
+    width: var(--search-bar-width-bottom);
+  }
+
   .wrapper_card {
     flex-direction: column;
   }
@@ -589,5 +591,13 @@ li {
   }
   .wrapper_like_item{
     padding: 24px 10px 10px 16px;
+  }
+
+  #like_playlist_track {
+    display: inline-block;
+  }
+
+  .num_like{
+    right: 20%;
   }
 }

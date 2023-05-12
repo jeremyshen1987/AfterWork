@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import Loading from "./Components/Loading";
 import { useMainContext } from "@/utils/context";
 import sortLike from "@/utils/sortLikes";
@@ -50,7 +51,7 @@ export default function Liked(){
 
                                                 </div>
                                             </Link>
-                                            <span className="clear_like" onClick={()=>{setLikes(items.filter(i => i.id !== id))}}>\uD83D\uDDD9</span>
+                                            <span className="clear_like" onClick={()=>{setLikes(items.filter(i => i.id !== id))}}><Image src='/cancel_red.svg' width={30} height={30} alt="cancel" /></span>
 
                                         </div>
 

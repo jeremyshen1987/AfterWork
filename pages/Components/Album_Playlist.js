@@ -89,7 +89,8 @@ export default function Playlist({type, tracks, img_url}){
                     const duration_ms = track.duration_ms
     
                     return(
-                        <div className="playlist" onMouseOver={(e)=>Like_Btn_on(e)} onMouseLeave={(e)=>Like_Btn_off(e)}>
+
+                        <div key={id} className="playlist" onMouseOver={(e)=>Like_Btn_on(e)} onMouseLeave={(e)=>Like_Btn_off(e)}>
                             <span className="track_num">{track_number}</span>
                             
                             <div className="list_container">
