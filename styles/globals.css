@@ -202,7 +202,8 @@ a {
 
 #like_playlist_track {
   display: none;
-  z-index: 20;
+  margin-right: auto;
+  z-index: 1;
 }
 
 .playlist {
@@ -234,18 +235,31 @@ a {
   color: grey
 }
 
+.image {
+  z-index: 1;
+}
+
 .list_container {
   flex: 1;  
   display: flex;
   justify-content: space-between;
   align-items: center;
+  gap: 10px;
 }
 
 .duration {
+  flex-shrink: 0;
   height: 100%;
+  width: 85px;
   display: flex;
+  justify-content: space-between;
   align-items: center;
   gap: 20px;
+}
+
+.track_duration {
+  margin-left: auto;
+  /* width: 36px; */
 }
 
 .category_name {
@@ -513,6 +527,7 @@ li {
     height: clamp(30px, 10vh, 100px);
     justify-content: center;
     gap: clamp(30px, 5vw, 100px);
+    z-index: 14;
   }
 
   .main_container {

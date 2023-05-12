@@ -59,10 +59,10 @@ export default function Playlist({type, tracks, img_url}){
                    
                                 <div className="duration">
                                     <div id="like_playlist_track">
-                                        <Image src={likes.filter(like => like.id === id).length === 0 ? '/heart_empty.svg' : '/heart_filled.svg'} width={25} height={25} alt="Like button" 
+                                        <Image src={likes.filter(like => like.id === id).length === 0 ? '/heart_empty.svg' : '/heart_filled.svg'} className="imgage" width={25} height={25} alt="Like button" 
                                         onClick={(e)=>{e.stopPropagation(), toggleLike('track', name, id, img_url, likes, setLikes)}}/>
                                     </div>
-                                    <span>{conversion_ms_minute(duration_ms)}</span>
+                                    <span className="track_duration" >{conversion_ms_minute(duration_ms)}</span>
                                 </div>
     
                             </div>
@@ -123,7 +123,7 @@ export default function Playlist({type, tracks, img_url}){
                                         <Image src={likes.filter(like => like.id === id).length === 0 ? '/heart_empty.svg' : '/heart_filled.svg'} width={25} height={25} alt="Like button" 
                                         onClick={(e)=>{e.stopPropagation(), toggleLike('track', name, id, img_url, likes, setLikes)}}/>
                                     </div>
-                                    <span>{conversion_ms_minute(duration_ms)}</span>
+                                    <span className="track_duration">{conversion_ms_minute(duration_ms)}</span>
                                 </div>
     
                             </div>
