@@ -11,6 +11,7 @@ import new_release from "@/utils/newRelease"
 export default function New_Release() {
 
     const {newRelease, setNewRelease} = useMainContext()
+    const [mounted, setMounted] = useState(false)
 
     useEffect(()=>{
 
@@ -20,6 +21,7 @@ export default function New_Release() {
             try{
                 const data = await validate_token(new_release)
                 const items = data.items
+                setMounted(true)
                 setNewRelease(items)
 
             }catch(err){
@@ -32,19 +34,20 @@ export default function New_Release() {
 
 
 
-    if(newRelease.length === 0){
-        return(
-            <Loading />
-        )
-    }
+    // if(newRelease.length === 0){
+    //     return(
+    //         <Loading />
+    //     )
+    // }
 
-    if(typeof window !== 'undefined'){
-        const uid = window.crypto.randomUUID()
 
-        return(
-            <Cards_Group key={uid} type='New Release' items={newRelease}/>
-        )
-    }
+
+
+    return(
+        mounted && <Cards_Group type='New Release' items={newRelease}/>
+    )
+
+    
 
 
 }

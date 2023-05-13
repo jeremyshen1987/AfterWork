@@ -24,7 +24,8 @@ export default function setColor(img_url, id){
         const elm = document.getElementById(id)
   
   
-        elm.style.backgroundColor = RGBAToHexA(r, g, b, 0.5)
+        elm.style.background = `linear-gradient(45deg, ${RGBAToHexA(r, g, b, 0.5)}, black)  `    
+        // RGBAToHexA(r, g, b, 0.5) 
     };
 
   } catch(err) {

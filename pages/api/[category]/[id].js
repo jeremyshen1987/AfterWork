@@ -47,7 +47,8 @@ export default async function getItems(req, res){
                                 artist_album: {...res2},
                                 related_artist: {...res3}
                             }
-                            res.json(data)
+                            res.status(200).json(data)
+
                         }).catch(err => res.json(err))
 
         return

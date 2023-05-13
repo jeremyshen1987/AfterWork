@@ -2,6 +2,7 @@ import Cards_Group from './Cards_Group'
 import upperCase from "@/utils/upperCase"
 import toggleLike from '@/utils/toggleLike'
 import setHistory from '@/utils/setHistory'
+import setColor from '@/utils/setColor'
 import { useMainContext } from "@/utils/context"
 
 export default function Artist_Page({data}){
@@ -19,6 +20,7 @@ export default function Artist_Page({data}){
         const img_url = images[0].url
 
         setHistory(type, name, id, img_url)
+        setColor(img_url, "album_detail")
 
 
         return(
@@ -27,7 +29,7 @@ export default function Artist_Page({data}){
     
                 <img src={img_url} className="album_img_small round_img"></img>
     
-                <div className="album_detail">
+                <div className="album_detail" id='album_detail'>
                     <p className="album_type">{upperCase(type)}</p>
                     <h1>{name}</h1>
                     

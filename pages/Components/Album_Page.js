@@ -42,7 +42,7 @@ export default function Album_Page({data}){
                                     {/* to do: */}
                                     {/* <img src="" className="img_mini"></img> */}
                                     
-                                    <Link href={`/${artist.type}/${artist.id}`} style={{ textDecoration: 'none', color: 'white' }}><p className="track_artist_clickable">{artist.name}</p></Link>
+                                    <Link href={`/${artist.type}/${artist.id}`}><p className="track_artist_clickable">{artist.name}</p></Link>
                                 </div>
                             )
                         })}

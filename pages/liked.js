@@ -4,6 +4,7 @@ import Loading from "./Components/Loading";
 import { useMainContext } from "@/utils/context";
 import sortLike from "@/utils/sortLikes";
 import upperCase from "@/utils/upperCase";
+import { remove_like } from "@/utils/remove_like";
 
 
 export default function Liked(){
@@ -30,7 +31,7 @@ export default function Liked(){
                 {typeArr.map(type => {
                     return(
                         <>
-                            <h1>{upperCase(type)}</h1>
+                            <h1 key={type}>{upperCase(type)}</h1>
                     
                             {sortedArr[type].map((i, idx) => {
 
@@ -40,20 +41,20 @@ export default function Liked(){
                                 return(
                                     
 
-                                        <div key={idx} className='wrapper_like_item relative'>
+                                    <div key={id} className='wrapper_like_item relative'>
 
-                                            <img src={i.img_url} className='img_tiny'></img>
-                                            <Link href={url} key={idx} className="flex1">
-                                                <div className='like_item_text'>
+                                        <img key={window.crypto.randomUUID()} src={i.img_url} className='img_tiny'></img>
+                                        <Link href={url} key={window.crypto.randomUUID()} className="flex1">
+                                            <div key={window.crypto.randomUUID()} className='like_item_text'>
 
-                                                    <p className='grey'>{upperCase(type)}</p>   
-                                                    <p className='album_link_text'>{i.name}</p>  
+                                                <p className='grey'>{upperCase(type)}</p>   
+                                                <p className='album_link_text'>{i.name}</p>  
 
-                                                </div>
-                                            </Link>
-                                            <span className="clear_like" onClick={()=>{setLikes(items.filter(i => i.id !== id))}}><Image src='/cancel_red.svg' width={30} height={30} alt="cancel" /></span>
+                                            </div>
+                                        </Link>
+                                        <span key={window.crypto.randomUUID()} className="clear_like" onClick={()=>{remove_like(id, setLikes)}}><Image src='/cancel_red.svg' width={30} height={30} alt="cancel" /></span>
 
-                                        </div>
+                                    </div>
 
                                     
                                 )

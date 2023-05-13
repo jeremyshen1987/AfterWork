@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link"
 import Active_Link from "./Active_Link";
@@ -6,8 +7,24 @@ import { useMainContext } from "@/utils/context";
 
 export default function Menu(){
 
-    const {likes} = useMainContext()
+    const {likes, setLikes} = useMainContext()
     const num = likes.filter(like => like.id !== null).length
+
+
+    useEffect(()=>{
+      // Liked array stored in LS
+      let liked_LS = JSON.parse(localStorage.getItem('liked_after_work'))
+  
+      if(liked_LS === null){
+  
+        return
+      }
+  
+      if(Array.isArray(liked_LS)){
+        setLikes(liked_LS)
+      }
+  
+    }, [])
 
 
     return(

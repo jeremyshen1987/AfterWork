@@ -221,9 +221,12 @@ a {
 .track_num {
   color: grey;
   margin-right: 10px;
+  padding: 5px;
+  width: 24px;
+  flex-shrink: 0;
 }
 
-.track_artist, .playlist_artist, .grey {
+.track_artist, .track_artist a, .playlist_artist, .grey {
   color: gray;
 }
 
@@ -587,6 +590,8 @@ li {
     align-items: center;
     padding: 20px;
   }
+
+
 
   .album_type{
     display: none;
