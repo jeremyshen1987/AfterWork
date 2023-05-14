@@ -27,44 +27,63 @@ export default function Liked(){
     }
 
     return(
-            <div className="container_like_items">   
-                {typeArr.map(type => {
-                    return(
-                        <>
-                            <h1 key={type}>{upperCase(type)}</h1>
-                    
-                            {sortedArr[type].map((i, idx) => {
+        <>
+        <div className="container_like_items">   
+            {typeArr.map(type => {
+                return(
+                    <>
+                        <h1 key={type}>{upperCase(type)}</h1>
+                
+                        {sortedArr[type].map((i, idx) => {
 
-                                const id = i.id
-                                const url = `/${type}/${id}`
+                            const id = i.id
+                            const url = `/${type}/${id}`
 
-                                return(
-                                    
+                            return(
+                                
 
-                                    <div key={id} className='wrapper_like_item relative'>
+                                <div key={id} className='wrapper_like_item relative'>
 
-                                        <img key={window.crypto.randomUUID()} src={i.img_url} className='img_tiny'></img>
-                                        <Link href={url} key={window.crypto.randomUUID()} className="flex1">
-                                            <div key={window.crypto.randomUUID()} className='like_item_text'>
+                                    <img key={window.crypto.randomUUID()} src={i.img_url} className='img_tiny'></img>
+                                    <Link href={url} key={window.crypto.randomUUID()} className="flex1">
+                                        <div key={window.crypto.randomUUID()} className='like_item_text'>
 
-                                                <p className='grey'>{upperCase(type)}</p>   
-                                                <p className='album_link_text'>{i.name}</p>  
+                                            <p className='grey'>{upperCase(type)}</p>   
+                                            <p className='album_link_text'>{i.name}</p>  
 
-                                            </div>
-                                        </Link>
-                                        <span key={window.crypto.randomUUID()} className="clear_like" onClick={()=>{remove_like(id, setLikes)}}><Image src='/cancel_red.svg' width={30} height={30} alt="cancel" /></span>
+                                        </div>
+                                    </Link>
+                                    <span key={window.crypto.randomUUID()} className="clear_like" onClick={()=>{remove_like(id, setLikes)}}><Image src='/cancel_red.svg' width={30} height={30} alt="cancel" /></span>
 
-                                    </div>
+                                </div>
 
-                                    
-                                )
-                            })}
-                            
-                        </>
-                    )
-                })}
-           </div>
+                                
+                            )
+                        })}
+                        
+                    </>
+                )
+            })}
+        </div>
+        </>
     )
 
 }
+
+export async function getServerSideProps(context) {
+
+    const {req} = context
+  
+    let referer = req.headers.referer ?? ''
+    console.log(referer)
+  
+  
+    return {
+      props:{
+        referer
+      }
+        
+    };
+  }
+  
 

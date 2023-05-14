@@ -1,12 +1,13 @@
 import { useState, useEffect } from "react";
 import Image from "next/image";
-import { useMainContext } from "@/utils/context";
+import Suggestion_Panel from "./Suggestion_Panel";
 
+import { useMainContext } from "@/utils/context";
 import Button_Round from "./Button_Round";
 import changeCategories from "@/utils/changeCategories";
 import overlay_on from "@/utils/overlay_on";
 import overlay_auto_shut from "@/utils/overlay_auto_shut";
-import Suggestion_Panel from "./Suggestion_Panel";
+
 import handleClickEvent from "@/utils/handleClickEvent";
 
 export default function Search({categories, selectCategories, setSelectCategories, handleChange}){

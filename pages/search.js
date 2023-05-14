@@ -44,7 +44,6 @@ export default function App(){
 
     return(
         <>
-       
             <Search categories={categories} selectCategories={selectCategories} setSelectCategories={setSelectCategories} 
                 handleChange={(e)=>handleChange(e, searchObj, setSearchObj)} />
 

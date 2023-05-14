@@ -7,9 +7,10 @@ import Playlist_Page from "../Components/Playlist_Page";
 
 import validate_token from "@/utils/validate_token";
 import search_by_id from "@/utils/search_by_id";
+import Navbar from "../Components/Navbar";
 
 
-export default function Album_Artist_Playlist(){
+export default function Album_Artist_Playlist({referer}){
     
     const router = useRouter()
     const {type, id} = router.query
@@ -35,29 +36,54 @@ export default function Album_Artist_Playlist(){
         case 'album':
 
             return (
+                <>
+                <Navbar referer={referer}/>
                 <Album_Page data={data}/>
+                </>
             )
             
         case 'playlist':
             return(
+                <>
+                <Navbar referer={referer}/>
                 <Playlist_Page data={data}/>
+                </>
+                
             )
         
         case 'artist':
             return(
+                <>
+                <Navbar referer={referer}/>
                 <Artist_Page key={id} data={data}/>
+                </>
             )
         case 'track':
             return(
-                 <Track_Page key={id} data={data}/>
+                <>
+                <Navbar referer={referer}/>
+                <Track_Page key={id} data={data}/>
+                </>
             )
         default:
             return null
     }
 
-    
-
-
-
-
 }
+
+export async function getServerSideProps(context) {
+
+    const {req} = context
+  
+    let referer = req.headers.referer ?? ''
+    console.log(referer)
+  
+  
+    return {
+      props:{
+        referer
+      }
+        
+    };
+}
+  

@@ -15,7 +15,7 @@ export default function setColor(img_url, id){
         canvas.height = image.height;
         context.drawImage(image, 0, 0, 1, 1);
   
-        console.log(`color is rgba(${context.getImageData(0, 0, 1, 1).data.join(',')})`);
+        // console.log(`color is rgba(${context.getImageData(0, 0, 1, 1).data.join(',')})`);
   
         const r = parseInt(context.getImageData(0, 0, 1, 1).data[0]) 
         const g = parseInt(context.getImageData(0, 0, 1, 1).data[1] ) 
@@ -23,9 +23,7 @@ export default function setColor(img_url, id){
   
         const elm = document.getElementById(id)
   
-  
         elm.style.background = `linear-gradient(45deg, ${RGBAToHexA(r, g, b, 0.5)}, black)  `    
-        // RGBAToHexA(r, g, b, 0.5) 
     };
 
   } catch(err) {
