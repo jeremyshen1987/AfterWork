@@ -1,5 +1,45 @@
-export default function Loading({words = 'Loading...'}){
+export default function Loading({num = 8, title, name, type, img_url}){
+
+    let arr = []
+
+    for(let i = 0; i < num; i++){
+        arr.push(i)
+    }
+    
+
     return(
-        <h1 className="central_display">{words}</h1>
+
+        <div className="wrapper_card_group">
+            <div className="category_name">
+                {title}
+            </div>
+            <div className="wrapper_card">
+                
+                {arr.map(i => {
+                    return(
+                        <Card_Loading key={i} name={name} type={type} img_url={img_url}/>
+                    )
+                })}
+                
+            </div>
+        
+        </div>
+
     )
+}
+
+
+function Card_Loading({name, type, img_url}){
+
+    return(
+        <div className="card_overview">
+            <img src={img_url} className={type === 'Artists' || type === 'Artist' ? 'round_img img_small' : 'img_small'}></img>
+
+            <div className="card_overview_text">
+                <p> {name}</p>
+                <p>{type}</p>
+            </div>
+        </div>
+    )
+
 }

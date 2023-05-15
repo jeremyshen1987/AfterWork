@@ -22,11 +22,11 @@ export default function Card_Overview({type, item}){
     
         return(
             <div key={window.crypto.randomUUID()} className="card_overview">
-                <img key={window.crypto.randomUUID()} src={img_url} className={type === 'Artists' || type === 'Artist' ? 'round_img img_small' : 'img_small'}></img>
+                <img src={img_url} className={type === 'Artists' || type === 'Artist' ? 'round_img img_small' : 'img_small'}></img>
 
                 <div key={window.crypto.randomUUID()} className="card_overview_text">
-                    <p key={window.crypto.randomUUID()} > {data.name}</p>
-                    <p key={window.crypto.randomUUID()} >{type}</p>
+                    <p> {data.name}</p>
+                    <p>{type}</p>
                 </div>
             </div>
         )

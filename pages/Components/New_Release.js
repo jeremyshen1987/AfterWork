@@ -34,16 +34,17 @@ export default function New_Release() {
 
 
 
-    // if(newRelease.length === 0){
-    //     return(
-    //         <Loading />
-    //     )
-    // }
+    if(newRelease.length === 0){
+        return(
+            <Loading title='New Release' name='Loading...' type='Please Wait...' img_url='/reload_black.svg'/>
+        )
+    }
 
 
 
 
     return(
+
         mounted && <Cards_Group type='New Release' items={newRelease}/>
     )
 
