@@ -24,13 +24,20 @@ export default function Album_Artist_Playlist({referer}){
         
             (async function getItems(){
                 
-                const response = await validate_token(search_by_id, type, id)
-                setData(response)
+                try{
+                    const response = await validate_token(search_by_id, type, id)
+                    setData(response)
+                }
+                catch(err){
+                    console.log('id err', err)
+                }
+
             })()
 
         }
     }, [type, id])
 
+    // catch errors from all types except artist
     if(data !== null && typeof data.error !== 'undefined'){
         
         const err_msg = typeof data.error.message !== 'undefined' ? data.error.message : 'Something went wrong'
@@ -43,7 +50,7 @@ export default function Album_Artist_Playlist({referer}){
 
             return (
                 <>
-                <Navbar referer={referer}/>
+                <Navbar />
                 <Album_Page data={data}/>
                 </>
             )
@@ -51,23 +58,28 @@ export default function Album_Artist_Playlist({referer}){
         case 'playlist':
             return(
                 <>
-                <Navbar referer={referer}/>
+                <Navbar />
                 <Playlist_Page data={data}/>
                 </>
                 
             )
         
         case 'artist':
+
+            if(data !== null && typeof data.artist_info.error !== 'undefined'){
+                return <Error_API err={typeof data.error.message !== 'undefined' ? data.artist_info.error.message : 'Something went wrong' } />
+            }
+
             return(
                 <>
-                <Navbar referer={referer}/>
+                <Navbar />
                 <Artist_Page key={id} data={data}/>
                 </>
             )
         case 'track':
             return(
                 <>
-                <Navbar referer={referer}/>
+                <Navbar />
                 <Track_Page key={id} data={data}/>
                 </>
             )
@@ -77,19 +89,4 @@ export default function Album_Artist_Playlist({referer}){
 
 }
 
-// export async function getServerSideProps(context) {
-
-//     const {req} = context
-  
-//     let referer = req.headers.referer ?? ''
-//     console.log(referer)
-  
-  
-//     return {
-//       props:{
-//         referer
-//       }
-        
-//     };
-// }
   
