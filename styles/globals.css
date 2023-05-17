@@ -207,7 +207,7 @@ a {
   border-radius: 15px;
 }
 
-.album_detail h1 {
+.album_detail h1, .err_msg {
   font-size: 4rem;
 }
 

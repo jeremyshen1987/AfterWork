@@ -1,13 +1,14 @@
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
+import Navbar from "../Components/Navbar";
 import Album_Page from "../Components/Album_Page";
 import Artist_Page from "../Components/Artist_Page";
 import Track_Page from "../Components/Track_Page";
 import Playlist_Page from "../Components/Playlist_Page";
+import Error_API from "../Components/Error_API";
 
 import validate_token from "@/utils/validate_token";
 import search_by_id from "@/utils/search_by_id";
-import Navbar from "../Components/Navbar";
 
 
 export default function Album_Artist_Playlist({referer}){
@@ -30,6 +31,11 @@ export default function Album_Artist_Playlist({referer}){
         }
     }, [type, id])
 
+    if(data !== null && typeof data.error !== 'undefined'){
+        
+        const err_msg = typeof data.error.message !== 'undefined' ? data.error.message : 'Something went wrong'
+        return <Error_API err={err_msg} />
+    }
 
     switch(type){
 
@@ -71,19 +77,19 @@ export default function Album_Artist_Playlist({referer}){
 
 }
 
-export async function getServerSideProps(context) {
+// export async function getServerSideProps(context) {
 
-    const {req} = context
+//     const {req} = context
   
-    let referer = req.headers.referer ?? ''
-    console.log(referer)
+//     let referer = req.headers.referer ?? ''
+//     console.log(referer)
   
   
-    return {
-      props:{
-        referer
-      }
+//     return {
+//       props:{
+//         referer
+//       }
         
-    };
-}
+//     };
+// }
   
