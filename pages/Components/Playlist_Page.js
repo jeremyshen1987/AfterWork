@@ -45,7 +45,7 @@ export default function Playlist_Page({data}){
                             <span style={{margin: '0 5px'}}>•</span>
                             <span>{tracks.total} songs</span>
                             <button onClick={()=>toggleLike(type, name, id, img_url, likes, setLikes)} className="round_btn like_btn">
-                                {likes.filter(like => like.id === id).length > 0 ? 'Unlike' : 'Like this album'}
+                                {likes.filter(like => like.id === id).length > 0 ? 'Unlike' : 'Like this Playlist'}
                             </button>
                         </div>
                         

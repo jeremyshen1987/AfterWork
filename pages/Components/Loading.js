@@ -14,9 +14,10 @@ export default function Loading({num = 8, title, name, type, img_url}){
                 {title}
             </div>
             <div className="wrapper_card">
-                
+
                 {arr.map(i => {
                     return(
+                        // arr is not gonna change; safe to use index as key
                         <Card_Loading key={i} name={name} type={type} img_url={img_url}/>
                     )
                 })}

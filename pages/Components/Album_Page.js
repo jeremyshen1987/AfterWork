@@ -17,7 +17,7 @@ export default function Album_Page({data}){
     }
 
     try{
-        const {artists, external_urls, images, release_date, name, tracks, total_tracks, type, id} = data
+        const {artists, external_urls, images, release_date, name, tracks, total_tracks, type, genres, id} = data
         const img_url = images[0].url
 
         setHistory(type, name, id, img_url)

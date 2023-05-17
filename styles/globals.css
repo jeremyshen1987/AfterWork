@@ -110,6 +110,11 @@ body {
 
 }
 
+#select_recommend {
+  color: var(--essential-positive);
+  align-self: flex-start;
+}
+
 #brightGreen {
   color: var(--essential-bright-accent);
   border-left: 2px solid var(--essential-bright-accent);
@@ -149,7 +154,7 @@ body {
   top: 15%;
   right: 35%;
   padding: 5px 10px;
-  color: white;
+  color: black;
   background-color: var(--essential-bright-accent);
   border-radius: 50%;
 }
@@ -318,6 +323,7 @@ a {
 
 .track_album_container, .wrapper_like_item{
   display: flex;
+  align-items: center;
   gap: 10px;
   padding: 24px 36px;
 }
@@ -631,7 +637,12 @@ li {
     font-size: 2rem;
   }
   .wrapper_like_item{
-    padding: 24px 10px 10px 16px;
+    padding: 36px 10px 10px 16px;
+  }
+
+  .wrapper_like_item * {
+    font-size: clamp(14px, 2vw, 18px);
+
   }
 
   #like_playlist_track {

@@ -16,7 +16,7 @@ export default function Artist_Page({data}){
     try{
 
         const {artist_info, artist_album, related_artist} = data
-        const {external_urls, images, followers, id, name, type} = artist_info
+        const {external_urls, images, followers, id, name, type, genres} = artist_info
         const img_url = images[0].url
 
         setHistory(type, name, id, img_url)

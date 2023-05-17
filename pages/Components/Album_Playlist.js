@@ -83,6 +83,7 @@ export default function Playlist({type, tracks, img_url}){
                     const {track} = item
                     const track_number = idx + 1
                     const artists = track.artists
+                    const genres = artists.genres
                     const id = track.id
                     const url = track.album.external_urls.spotify
                     const name = track.album.name

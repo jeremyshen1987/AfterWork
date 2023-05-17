@@ -18,7 +18,7 @@ function Wrapper_Synopsis({children, name}){
 
 }
 
-export default function Cards_Group({type, items}){
+export default function Cards_Group({type, items, title = null}){
 
     if(typeof items === 'undefined' || items === null){
         return
@@ -26,10 +26,12 @@ export default function Cards_Group({type, items}){
 
     if(typeof window !== 'undefined'){
 
+        
+
         return(
 
 
-            <Wrapper_Synopsis key={window.crypto.randomUUID()} name={type}>
+            <Wrapper_Synopsis key={window.crypto.randomUUID()} name={title === null ? type : title}>
     
                 {items.map((item) => {
                     return(

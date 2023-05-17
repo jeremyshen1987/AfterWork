@@ -19,7 +19,7 @@ export default function Track_Page({data}){
         console.log('track data', data)
 
         const {album, id, artists, name, type, duration_ms} = data
-        const {images, total_tracks, release_date} = album
+        const {images, total_tracks, genres, release_date} = album
         const img_url = images[0].url
 
         setColor(img_url, 'album_detail')
