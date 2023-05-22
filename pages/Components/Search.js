@@ -13,21 +13,15 @@ import handleClickEvent from "@/utils/handleClickEvent";
 export default function Search({categories, selectCategories, setSelectCategories, handleChange}){
 
 
-    const {searchObj, setSearchObj, setSearchResult, focusInput, setFocusInput} = useMainContext()
+    const {searchObj, setSearchObj, setSearchResult} = useMainContext()
 
-    // didn't use useRef inside useEffect since it return undefined sometime
+
     useEffect(()=>{
 
-        const overlay = document.getElementById('overlay')
-        const panel = document.getElementById('panel')
-        window.addEventListener('click', (e)=>handleClickEvent(e, overlay, panel))
+        window.addEventListener('click', handleClickEvent)
 
         return ()=>{window.removeEventListener('click', handleClickEvent)}
     }, [])
-
-    if(typeof categories === 'undefined' || categories === null){
-        return
-    }
 
 
     return(
@@ -36,7 +30,6 @@ export default function Search({categories, selectCategories, setSelectCategorie
                 <input className="flex1 round_btn search_do_not_touch" id="search" name="query" value={searchObj.query} onChange={handleChange} onFocus={(e)=>overlay_on(e, overlay, panel)}  maxLength="24" type="text" placeholder="Search Albums, Songs, Artists, Playlists..."  />
                 {searchObj.query === '' ? null : <span className="clear_search" onClick={()=>{setSearchObj({...searchObj, query: ''}), setSearchResult({})}}><Image src='/cancel.svg' width={30} height={30} alt="cancel" /></span>}
             </div>
-
             <Suggestion_Panel/>
             
             <div id="overlay"></div>

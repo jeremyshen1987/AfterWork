@@ -17,7 +17,7 @@ export default function App(){
 
     const [selectCategories,setSelectCategories]= useState([])  
 
-    const categories = Object.keys(searchResult)
+    const categories = Object.keys(searchResult) ?? []
 
 
     useEffect(()=>{
@@ -37,10 +37,6 @@ export default function App(){
     
     }, [searchObj.query])
 
-    if (typeof window !== 'undefined'){
-        validate_token()
-    }
-
 
     return(
         <>
@@ -57,7 +53,8 @@ export default function App(){
                                         <Recommendations />
                                         <Recently_Viewed /> 
                                         <New_Release />
-                                    </>: null}
+                                      </>
+                                      : null}
 
         </>
     )
