@@ -31,13 +31,13 @@ export default function Cards_Group({type, items, title = null}){
         return(
 
 
-            <Wrapper_Synopsis key={window.crypto.randomUUID()} name={title === null ? type : title}>
+            <Wrapper_Synopsis key={crypto.randomUUID()} name={title === null ? type : title}>
     
                 {items.map((item) => {
                     return(
                         <>
-                            <Link key={window.crypto.randomUUID()} href={`/${item.type}/${item.id}`} >
-                                <Card_Overview key={window.crypto.randomUUID()} type={type} item={item}/>
+                            <Link key={crypto.randomUUID()} href={`/${item.type}/${item.id}`} >
+                                <Card_Overview key={crypto.randomUUID()} type={type} item={item}/>
                             </Link>
                         
                         </>

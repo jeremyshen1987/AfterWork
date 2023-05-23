@@ -10,7 +10,6 @@ export default function Menu(){
     const {likes, setLikes} = useMainContext()
     const num = likes.filter(like => like.id !== null).length
 
-
     useEffect(()=>{
       // Liked array stored in LS
       let liked_LS = JSON.parse(localStorage.getItem('liked_after_work'))

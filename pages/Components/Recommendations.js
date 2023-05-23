@@ -8,7 +8,6 @@ import { useMainContext } from "@/utils/context"
 export default function Recommendations(){
 
     const {likes, setLikes, recommended, setRecommended}= useMainContext()
-    const [mounted, setMounted] = useState(false)
 
     // if an artist or track is Liked, auto select first item to make recommendations
     const keys = likes.map(like => like.type)

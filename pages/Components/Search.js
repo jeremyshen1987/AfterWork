@@ -27,7 +27,7 @@ export default function Search({categories = [], selectCategories, setSelectCate
     return(
         <>
             <div className="flex center flex_width search_bar relative">
-                <input className="flex1 round_btn search_do_not_touch" id="search" name="query" value={searchObj.query} onChange={handleChange} onFocus={(e)=>overlay_on(e, overlay, panel)}  maxLength="24" type="text" placeholder="Search Albums, Songs, Artists, Playlists..."  />
+                <input  value={searchObj.query} onChange={handleChange} onFocus={(e)=>overlay_on(e, overlay, panel)}  className="flex1 round_btn search_do_not_touch" id="search" name="query" maxLength="24"  placeholder="Search Albums, Songs, Artists, Playlists..."  />
                 {searchObj.query === '' ? null : <span className="clear_search" onClick={()=>{setSearchObj({...searchObj, query: ''}), setSearchResult({})}}><Image src='/cancel.svg' width={30} height={30} alt="cancel" /></span>}
             </div>
             <Suggestion_Panel/>

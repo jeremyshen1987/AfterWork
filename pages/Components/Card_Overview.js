@@ -5,6 +5,7 @@ export default function Card_Overview({type, item}){
         return
     }
 
+    // images are missing sometimes causing render error
     try{
 
         let img_url;
@@ -21,10 +22,10 @@ export default function Card_Overview({type, item}){
         }
     
         return(
-            <div key={window.crypto.randomUUID()} className="card_overview">
+            <div key={crypto.randomUUID()} className="card_overview">
                 <img src={img_url} className={type === 'Artists' || type === 'Artist' ? 'round_img img_small' : 'img_small'}></img>
 
-                <div key={window.crypto.randomUUID()} className="card_overview_text">
+                <div key={crypto.randomUUID()} className="card_overview_text">
                     <p> {data.name}</p>
                     <p>{type}</p>
                 </div>
