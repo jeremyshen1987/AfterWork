@@ -10,7 +10,7 @@ import overlay_auto_shut from "@/utils/overlay_auto_shut";
 
 import handleClickEvent from "@/utils/handleClickEvent";
 
-export default function Search({categories, selectCategories, setSelectCategories, handleChange}){
+export default function Search({categories = [], selectCategories, setSelectCategories, handleChange}){
 
 
     const {searchObj, setSearchObj, setSearchResult} = useMainContext()

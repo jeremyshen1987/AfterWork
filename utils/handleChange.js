@@ -2,6 +2,9 @@ import search from "./search"
 
 export default function handleChange(e, searchObj ,setSearchObj){
 
+    const searchBar = document.getElementById('search')
+    searchBar.style.borderRadius = '36px'
+
     const panel = document.getElementsByClassName('panel')[0]
     panel.style.display = 'none'
 

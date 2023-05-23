@@ -5,8 +5,8 @@ const Suggestion_Panel = forwardRef(function Suggestion_Panel(props, ref){
 
 
     return(
-        <div className="flex center  suggestion_panel relative">
-            <div ref={ref} id='panel' className="panel suggestion_panel flex center  relative">
+        <div className="flex center  suggestion_panel ">
+            <div ref={ref} id='panel' className="panel suggestion_panel flex center relative">
 
                 <h4>Album</h4>
                 <ul>
