@@ -18,15 +18,18 @@ useRouter.mockReturnValue({
  
 describe('Active_Link', () => {
 
-    it('renders link and text', () => {
+    // beforeEach(()=>{
+
+
+    // })
+
+    it('display correct text and url', () => {
 
         render(
             <Active_Link href='/search'>
                 Search
             </Active_Link>
         );
-    
-        const router = useRouter()
 
         screen.debug()
         
@@ -35,4 +38,20 @@ describe('Active_Link', () => {
         expect(anchor).toHaveAttribute('href', '/search')
 
     });
+
+    it('have correct element id attribute if href and current path are the same', ()=>{
+
+        render(
+            <Active_Link href='/'>
+                Home
+            </Active_Link>
+        );
+
+        const router = useRouter()
+        const anchor = screen.getByRole('link', {name: 'Home'})
+        expect(anchor).toHaveAttribute('id', 'brightGreen')
+
+    })
+
+
 });
