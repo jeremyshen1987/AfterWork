@@ -22,7 +22,7 @@ export default function Liked(){
     if(likes.length === 0){
         return(
             <>
-                <h1>No liked items</h1>
+                <h1 className="central_display">No liked items</h1>
             </>
         )
     }
@@ -30,7 +30,7 @@ export default function Liked(){
     let banner = null
     if(likes.length > 0 && typeArr.includes('track') === false && typeArr.includes('artist') === false){
        
-        banner = <div className="wrapper_like_item">Like Track or Artist to get recommendations!</div>
+        banner = <div className="notification">Like Track or Artist to get recommendations!</div>
            
     }
 
@@ -49,12 +49,10 @@ export default function Liked(){
                             const name = i.name
                             const url = `/${type}/${id}`
                             
-                            const recommend_btn = id === recommended.id ? <p id="select_recommend">Selected</p> 
-                                                                        : <button className="round_btn" onClick={(e)=>{
-                                                                            validate_token(recommendations, name, type, id, setRecommended)
-                                                                            e.preventDefault()
-                                                                            router.push('/')
-                                                                        }}>Suggest</button>
+                            const recommend_btn = id === recommended.id ? <button className="round_btn" disabled>Suggested!</button>
+                                                                        : <button className="round_btn" onClick={() => validate_token(recommendations, name, type, id, setRecommended)}>
+                                                                            Suggest
+                                                                        </button>
 
                             return(
                                 
@@ -75,7 +73,6 @@ export default function Liked(){
                                 
                                     {type === 'artist' || type === 'track' ? recommend_btn : null}
 
-                                    {/* {type === 'artist' || type === 'track' ? <button onClick={()=>validate_token(recommendations, name, type, id, setRecommended)}>Get Recommendations</button> : null}  */}
                                 </div>
 
                                 

@@ -13,7 +13,7 @@ export default function Recommendations(){
 
         const keys = likes.map(like => like.type)
 
-        if(!keys.includes('track') && !keys.includes('artist')){
+        if(!keys.includes('track') && !keys.includes('artist') || recommended.name){
             return
         }
 
@@ -31,18 +31,6 @@ export default function Recommendations(){
 
     }, [])
 
-    // if an artist or track is Liked, auto select first item to make recommendations
-    // const keys = likes.map(like => like.type)
-
-    // if((keys.includes('track') || keys.includes('artist')) &&  recommended.id === undefined){
-    //     const key = keys.includes('track') ? 'track' : 'artist'
-    //     const item = likes.filter(like => like.type === key)
-
-    //     const {name, type, id} = item[0]
-    //     console.log('validate to recommend')
-    //     validate_token(recommendations, name, type, id, setRecommended)
-    //     return
-    // }
 
     if(Object.keys(recommended).length === 0){
         return
