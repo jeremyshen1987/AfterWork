@@ -47,7 +47,6 @@ export default function New_Release() {
     }, [])
 
 
-
     if(loading){
         return(
             <Loading title='New Release' name='Loading...' type='Please Wait...' img_url='/reload_black.svg'/>
@@ -58,13 +57,9 @@ export default function New_Release() {
         return <h1 className="error">Error: {error}</h1>
     }
 
-
     return(
 
         <Cards_Group type='New Release' items={newRelease}/>
     )
-
-    
-
 
 }

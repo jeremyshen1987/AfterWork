@@ -9,16 +9,40 @@ export default function Recommendations(){
 
     const {likes, setLikes, recommended, setRecommended}= useMainContext()
 
-    // if an artist or track is Liked, auto select first item to make recommendations
-    const keys = likes.map(like => like.type)
+    useEffect(() => {
 
-    if((keys.includes('track') || keys.includes('artist')) && typeof recommended.id === 'undefined'){
+        const keys = likes.map(like => like.type)
+
+        if(!keys.includes('track') && !keys.includes('artist')){
+            return
+        }
+
         const key = keys.includes('track') ? 'track' : 'artist'
         const item = likes.filter(like => like.type === key)
 
         const {name, type, id} = item[0]
-        validate_token(recommendations, name, type, id, setRecommended)
-    }
+        console.log('validate to recommend')
+
+        const trigger_recommend = setTimeout(() => {
+            validate_token(recommendations, name, type, id, setRecommended)
+        }, 200);
+        
+        return () => clearInterval(trigger_recommend)
+
+    }, [])
+
+    // if an artist or track is Liked, auto select first item to make recommendations
+    // const keys = likes.map(like => like.type)
+
+    // if((keys.includes('track') || keys.includes('artist')) &&  recommended.id === undefined){
+    //     const key = keys.includes('track') ? 'track' : 'artist'
+    //     const item = likes.filter(like => like.type === key)
+
+    //     const {name, type, id} = item[0]
+    //     console.log('validate to recommend')
+    //     validate_token(recommendations, name, type, id, setRecommended)
+    //     return
+    // }
 
     if(Object.keys(recommended).length === 0){
         return
@@ -27,19 +51,10 @@ export default function Recommendations(){
     
     const {name, results} = recommended
 
-    if(typeof results !== 'undefined'){
-        return  <List name={name} results={results}/>
-    }
- 
-}
-
-function List({name, results}){
-
     return(
         <>
         <Cards_Group type='Tracks' items={results.tracks} title={`Recommendations for you since you liked: ${name}`}/>
         </>
         
     )
-    
 }

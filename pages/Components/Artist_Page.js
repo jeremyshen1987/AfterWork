@@ -16,13 +16,11 @@ export default function Artist_Page({data}){
 
     try{
 
-        if(typeof data.artist_info.error !== 'undefined'){
-            return (<Error_Page err={data.artist_info.error.message ?? 'unknown error'} />)
-        }
-
         const {artist_info, artist_album, related_artist} = data
-        const {external_urls, images, followers, id, name, type, genres} = artist_info
+        const {images, followers, id, name, type} = artist_info
         const img_url = images[0].url
+
+        console.log('artist info', artist_info)
 
         setHistory(type, name, id, img_url)
         setColor(img_url, "album_detail")

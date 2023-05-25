@@ -5,13 +5,12 @@ import Album_Page from "../Components/Album_Page";
 import Artist_Page from "../Components/Artist_Page";
 import Track_Page from "../Components/Track_Page";
 import Playlist_Page from "../Components/Playlist_Page";
-import Error_API from "../Components/Error_API";
-
+import Error_Page from "../Components/Error_Page";
 import validate_token from "@/utils/validate_token";
 import search_by_id from "@/utils/search_by_id";
 
 
-export default function Album_Artist_Playlist({referer}){
+export default function Album_Artist_Playlist(){
     
     const router = useRouter()
     const {type, id} = router.query
@@ -29,7 +28,7 @@ export default function Album_Artist_Playlist({referer}){
                     setData(response)
                 }
                 catch(err){
-                    console.log('id err', err)
+                    console.log('id err', err.message)
                 }
 
             })()
@@ -40,14 +39,13 @@ export default function Album_Artist_Playlist({referer}){
     // catch errors from all types except artist
     if(data !== null && typeof data.error !== 'undefined'){
         
-        const err_msg = typeof data.error.message !== 'undefined' ? data.error.message : 'Something went wrong'
-        return <Error_API err={err_msg} />
+        const err_msg = data.error.message ?? 'Something went wrong'
+        return <Error_Page err={err_msg} />
     }
 
     switch(type){
 
         case 'album':
-
             return (
                 <>
                 <Navbar />
@@ -65,11 +63,6 @@ export default function Album_Artist_Playlist({referer}){
             )
         
         case 'artist':
-
-            if(data !== null && typeof data.artist_info.error !== 'undefined'){
-                return <Error_API err={typeof data.error.message !== 'undefined' ? data.artist_info.error.message : 'Something went wrong' } />
-            }
-
             return(
                 <>
                 <Navbar />
