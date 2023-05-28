@@ -59,7 +59,6 @@ export default function Album_Artist_Playlist(){
                 <Navbar />
                 <Playlist_Page data={data}/>
                 </>
-                
             )
         
         case 'artist':
@@ -77,7 +76,9 @@ export default function Album_Artist_Playlist(){
                 </>
             )
         default:
-            return null
+            return (
+                <Error_Page err='Resource do not exist' />
+            )
     }
 
 }

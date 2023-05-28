@@ -15,9 +15,9 @@ export default async function search(req, res){
 
     const results = await response.json()
 
-    res.json({
+    res.json(
         results
-    })
+    )
 
     
 

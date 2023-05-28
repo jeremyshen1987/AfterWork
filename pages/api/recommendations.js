@@ -21,8 +21,8 @@ export default async function recommendations(req, res){
 
     const results = await response.json()
 
-    res.json({
+    res.json(
         results
-    })
+    )
 
 }

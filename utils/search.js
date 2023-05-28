@@ -25,8 +25,7 @@ export default async function search(token, searchObj, setSearchResult){
         })
     
     
-        const res_json = await response.json();
-        const {results} = res_json
+        const results = await response.json();
     
         console.log('result: ', results)
         setSearchResult(results)

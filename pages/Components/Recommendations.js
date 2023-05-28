@@ -13,7 +13,12 @@ export default function Recommendations(){
 
         const keys = likes.map(like => like.type)
 
-        if(!keys.includes('track') && !keys.includes('artist') || recommended.name){
+        if(!keys.includes('track') && !keys.includes('artist') ){
+            setRecommended({})
+            return
+        }
+
+        if(typeof recommended.name !== "undefined"){
             return
         }
 

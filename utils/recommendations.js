@@ -10,9 +10,9 @@ export default async function recommendations(token, name, type, id, setRecommen
         })
     })
 
-    const {results} = await response.json();
+    const results = await response.json();
    
     setRecommended({results, name, id})
 
-    return results;
+    // return results;
 }

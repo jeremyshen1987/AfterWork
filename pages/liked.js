@@ -49,8 +49,11 @@ export default function Liked(){
                             const name = i.name
                             const url = `/${type}/${id}`
                             
-                            const recommend_btn = id === recommended.id ? <button className="round_btn" disabled>Suggested!</button>
-                                                                        : <button className="round_btn" onClick={() => validate_token(recommendations, name, type, id, setRecommended)}>
+                            const recommend_btn = id === recommended.id ? <button className="round_btn" disabled>Suggested !</button>
+                                                                        : <button className="round_btn" 
+                                                                            onClick={(e) => {e.preventDefault(),
+                                                                                            validate_token(recommendations, name, type, id, setRecommended),
+                                                                                            router.push('/')}}>
                                                                             Suggest
                                                                         </button>
 

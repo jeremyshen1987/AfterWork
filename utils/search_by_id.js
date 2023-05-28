@@ -8,9 +8,8 @@ export default async function search_by_id(token, type, id){
         })
     })
 
-    const res_json = await response.json();
-    const results = res_json
+    const results = await response.json();
 
-    console.log('search by id result :', results);
+    // console.log('search by id result :', results);
     return results;
 }
