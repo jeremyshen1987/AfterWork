@@ -7,19 +7,6 @@ import Menu from '@/pages/Components/Menu';
 import { MainProvider } from '@/utils/context';
 
 
-// jest.spyOn(useMainContext, 'likes').mockReturnValue([{id:1, type: 'test'}])
-// jest.replaceProperty(useMainContext, 'likes', [{id:1, type: 'test'}])
-
-// useMainContext.likes = jest.fn().mockReturnValue([{id:1, type: 'test'}])
-
-// jest.mock('@/utils/context', ()=>({
-//     useMainContext: jest.fn(()=>{
-//         return{
-//             likes: [{id:1, type: 'test'}],
-//             setLikes: {}
-//         }
-//     })
-// }))
 
 jest.mock('next/router', () => ({
     useRouter: jest.fn()

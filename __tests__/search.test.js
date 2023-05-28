@@ -84,7 +84,7 @@ describe('search and search result component', ()=>{
 
     }),
 
-    it('user can type in input field and query string is received by api after a short delay. Search results are returned from all four categories. Each category button will narrow down results to corresponding cat.  New release section dismount', async () => {
+    it('user can type in input field and query string is received by api after a short delay. Search results are returned from all four categories. Each category button will narrow down results to corresponding category.  New release section dismount', async () => {
 
         expect(screen.getByText(/new release/i)).toBeInTheDocument()
 
@@ -118,7 +118,7 @@ describe('search and search result component', ()=>{
         expect(artist_btn).toHaveClass('active_btn')
 
 
-        // categories other than 'artist' disappears, only a button and suggestion panel contain category name
+        // categories other than 'artist' disappears, only a button and suggestion panel contain category name so its length is 2
         expect(screen.getAllByText(/album/i).length).toEqual(2)
         expect(screen.getAllByText(/track/i).length).toEqual(2)
         expect(screen.getAllByText(/playlist/i).length).toEqual(2)
@@ -136,6 +136,7 @@ describe('search and search result component', ()=>{
         expect(select_all_btn).toHaveClass('active_btn')
         expect(artist_btn).not.toHaveClass('active_btn')
 
+        // now it shows results from all category
         expect(screen.getAllByText(/album/i).length).toBeGreaterThanOrEqual(8)
         expect(screen.getAllByText(/artist/i).length).toBeGreaterThanOrEqual(8)
         expect(screen.getAllByText(/track/i).length).toBeGreaterThanOrEqual(8)
