@@ -26,7 +26,7 @@ export default function Card_Overview({type, item}){
                 <img src={img_url} className={type === 'Artists' || type === 'Artist' ? 'round_img img_small' : 'img_small'}></img>
 
                 <div key={crypto.randomUUID()} className="card_overview_text">
-                    <p> {data.name}</p>
+                    <p title={data.name}> {data.name}</p>
                     <p>{type}</p>
                 </div>
             </div>
