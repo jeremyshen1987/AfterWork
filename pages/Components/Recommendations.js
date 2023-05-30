@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react"
+import { useEffect } from "react"
 import Cards_Group from "./Cards_Group"
 import recommendations from "@/utils/recommendations"
 import validate_token from "@/utils/validate_token"
@@ -7,7 +7,7 @@ import { useMainContext } from "@/utils/context"
 
 export default function Recommendations(){
 
-    const {likes, setLikes, recommended, setRecommended}= useMainContext()
+    const {likes, recommended, setRecommended}= useMainContext()
 
     useEffect(() => {
 
@@ -22,11 +22,11 @@ export default function Recommendations(){
             return
         }
 
+        // recommend the first eligible items in liked page
         const key = keys.includes('track') ? 'track' : 'artist'
         const item = likes.filter(like => like.type === key)
 
         const {name, type, id} = item[0]
-        console.log('validate to recommend')
 
         const trigger_recommend = setTimeout(() => {
             validate_token(recommendations, name, type, id, setRecommended)

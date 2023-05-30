@@ -11,7 +11,7 @@ export function MainProvider({ children }) {
 
     // to do: integrate ticketmaster show
     const [searchObj, setSearchObj] = useState({
-        type: 'show',
+        type: 'music',
         query: ''
     })
 
@@ -19,8 +19,15 @@ export function MainProvider({ children }) {
     // nested objects {type, name, id, img_url}
     const [likes, setLikes] = useState([])
 
+    const [player, setPlayer] = useState({
+        status: null,
+        album_id: null,
+        track_num: null,
+        position_ms: null
+    })
+
     return (
-        <MainContext.Provider value={{recommended, setRecommended, newRelease, setNewRelease, searchResult, setSearchResult, searchObj, setSearchObj, likes, setLikes}}>
+        <MainContext.Provider value={{recommended, setRecommended, newRelease, setNewRelease, searchResult, setSearchResult, searchObj, setSearchObj, likes, setLikes, player, setPlayer}}>
             {children}
         </MainContext.Provider>
     );

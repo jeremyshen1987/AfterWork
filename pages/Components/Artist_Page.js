@@ -1,5 +1,4 @@
 import Cards_Group from './Cards_Group'
-import Error_Page from './Error_Page'
 import upperCase from "@/utils/upperCase"
 import toggleLike from '@/utils/toggleLike'
 import setHistory from '@/utils/setHistory'

@@ -208,7 +208,7 @@ a {
 }
 
 .album_detail h1, .err_msg {
-  font-size: 4rem;
+  font-size: clamp(2rem, 4vw ,4rem);
 }
 
 .album_year, .like_artist, .like_song{
@@ -218,7 +218,6 @@ a {
 
 .like_btn {
   margin-left: auto;
-  border: solid 2px gold;
 }
 
 #like_playlist_track {
@@ -228,6 +227,7 @@ a {
 }
 
 .playlist {
+  position: relative;
   display: flex;
   align-items: center;
   padding: 10px;
@@ -245,6 +245,14 @@ a {
   padding: 5px;
   width: 24px;
   flex-shrink: 0;
+}
+
+.play_btn{
+  display: none;
+  position: absolute;
+  left: 5px;
+  width: 30px;
+  height: 30px;
 }
 
 .track_artist, .track_artist a, .playlist_artist, .grey {
@@ -333,7 +341,7 @@ a {
   flex-direction: column;
   justify-content: center;
   width: 100%;
-  padding: 0 15px;
+  padding: 10px 15px;
   border-radius: 15px;
 }
 
@@ -557,6 +565,11 @@ li {
 
   .container_logo {
     display: none;
+  }
+
+  .play_btn {
+    position: static;
+    display: inline-block;
   }
 
   .main_tabs {

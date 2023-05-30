@@ -1,13 +1,15 @@
 import Link from "next/link"
 import Image from "next/image"
 import { Like_Btn_on, Like_Btn_off } from "@/utils/toggle_like_btn"
+import { Player_Btn_on, Player_Btn_off } from "@/utils/toggle_player_btn"
+import { play_pause_btn } from "@/utils/play_pause_btn"
 import toggleLike from "@/utils/toggleLike"
 import conversion_ms_minute from "@/utils/conversion_ms_minute"
 import { useMainContext } from "@/utils/context"
 
-export default function Playlist({type, tracks, img_url}){
+export default function Playlist({album_id, type, tracks, img_url}){
 
-    const {likes, setLikes} = useMainContext()
+    const {likes, setLikes, player, setPlayer} = useMainContext()
 
     if(typeof tracks === 'undefined' || tracks === null){
         return
@@ -25,7 +27,9 @@ export default function Playlist({type, tracks, img_url}){
     
                     return(
                         
-                        <div key={id} className="playlist" onMouseOver={(e)=>Like_Btn_on(e)} onMouseLeave={(e)=>Like_Btn_off(e)}>
+                        <div key={id} className="playlist" onMouseOver={(e)=>{Like_Btn_on(e), Player_Btn_on(e, album_id, track_number, player)}} onMouseLeave={(e)=>{Like_Btn_off(e), Player_Btn_off(e, album_id, track_number, player)}}>
+                            
+                            <Image src={player.status === 'playing' ? '/pause_dark_green.svg' : '/play_green.svg'} width={40} height={40} alt="play button" className="play_btn" onClick={() => play_pause_btn(album_id, track_number, setPlayer)}></Image>
                             <span className="track_num">{track_number}</span>
                             
                             <div className="list_container">
@@ -92,7 +96,7 @@ export default function Playlist({type, tracks, img_url}){
                     return(
 
                         <div key={id} className="playlist" onMouseOver={(e)=>Like_Btn_on(e)} onMouseLeave={(e)=>Like_Btn_off(e)}>
-                            <span className="track_num">{track_number}</span>
+                            <span className="track_num">{track_number}</span>                            
                             
                             <div className="list_container">
                                 <div className="title_artist">
