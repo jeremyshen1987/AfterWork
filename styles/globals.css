@@ -97,7 +97,7 @@ body {
   text-align: center;
 }
 
-.main_tabs a{
+.main_tabs a, .main_tabs li{
   display: block;
   width: 100%;
   padding: 20px;
@@ -132,7 +132,7 @@ body {
   left: 40px;
 }
 
-.clear_search {
+.clear_search, .searching {
   position: absolute;
   right: -5px;
   top: -7px;
@@ -214,6 +214,12 @@ a {
 .album_year, .like_artist, .like_song{
   display: flex;
   align-items: center;
+}
+
+.artists_album {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
 }
 
 .like_btn {
@@ -581,8 +587,12 @@ li {
     width: 100vw;
     height: clamp(30px, 10vh, 100px);
     justify-content: center;
-    gap: clamp(30px, 5vw, 100px);
+    gap: clamp(12px, 5vw, 100px);
     z-index: 14;
+  }
+
+  .main_tabs li {
+    padding: 0;
   }
 
   .main_container {
@@ -666,8 +676,12 @@ li {
   }
 
   .wrapper_like_item * {
-    font-size: clamp(14px, 2vw, 18px);
+    font-size: clamp(18px, 2vw, 18px);
 
+  }
+
+  .round_btn {
+    font-size: clamp(12px, 1.5vw, 18px);
   }
 
   #like_playlist_track {
@@ -675,6 +689,7 @@ li {
   }
 
   .num_like{
-    right: 20%;
+    top: 0;
+    right: 0;
   }
 }

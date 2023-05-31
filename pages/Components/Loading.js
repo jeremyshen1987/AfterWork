@@ -1,4 +1,4 @@
-export default function Loading({num = 8, title, name, type, img_url}){
+export default function Loading({num = 8, title, name, type, img_url='/reload_black.svg'}){
 
     let arr = []
 

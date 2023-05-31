@@ -28,7 +28,10 @@ export default async function search(token, searchObj, setSearchResult){
         const results = await response.json();
     
         console.log('result: ', results)
-        setSearchResult(results)
+        setSearchResult({
+            isReady: true,
+            results:results
+        })
 
     } catch(err){
         console.log(err)

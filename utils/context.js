@@ -15,7 +15,10 @@ export function MainProvider({ children }) {
         query: ''
     })
 
-    const [searchResult, setSearchResult] = useState({})
+    const [searchResult, setSearchResult] = useState({
+        isReady: true,
+        results: null
+    })
     // nested objects {type, name, id, img_url}
     const [likes, setLikes] = useState([])
 

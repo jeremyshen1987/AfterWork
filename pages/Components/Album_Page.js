@@ -35,17 +35,16 @@ export default function Album_Page({data}){
                         <p className="album_type">{upperCase(type)}</p>
                         <h1>{name}</h1>
                         
+                        <div className="artists_album">
                         {artists.map(artist => {
                             return(
                                 <div key={artist.id}>
-
-                                    {/* to do: */}
-                                    {/* <img src="" className="img_mini"></img> */}
                                     
                                     <Link href={`/${artist.type}/${artist.id}`}><p className="track_artist_clickable">{artist.name}</p></Link>
                                 </div>
                             )
                         })}
+                        </div>
                             
                         <div className="album_year">
                             

@@ -11,27 +11,37 @@ import { useState, useEffect } from "react"
 export default function Playlist({album_id, type, tracks, img_url}){
 
     const {likes, setLikes, player, setPlayer} = useMainContext()
-    //useRef is also viable since its value never change
-    const [audio, setAudio] = useState(new Audio('/sample.mp3')) 
 
+    const [audio, setAudio] = useState(null) 
+
+    useEffect(() => {
+
+        setAudio(new Audio('/sample.mp3'))
+
+    }, [])
     
     useEffect(() => {
 
-        player.isPlaying ? audio.play() : audio.pause()
+        if(audio !== null){
+            player.isPlaying ? audio.play() : audio.pause()
+        }
 
     }, [player.isPlaying])
 
     useEffect(() => {
 
-        return()=>{
+        if(audio !== null){
+            return()=>{
 
-            audio.pause()
-
-            setPlayer({
-                ...player,
-                isPlaying: false
-            })
+                audio.pause()
+    
+                setPlayer({
+                    ...player,
+                    isPlaying: false
+                })
+            }
         }
+
     }, [audio])
 
 
@@ -120,12 +130,17 @@ export default function Playlist({album_id, type, tracks, img_url}){
     
                     return(
 
-                        <div key={id} className="playlist" onMouseOver={(e)=>Like_Btn_on(e)} onMouseLeave={(e)=>Like_Btn_off(e)}>
+                        <div key={id} className="playlist" id={track_number} onMouseOver={(e)=>{Like_Btn_on(e), Player_Btn_on(e, album_id, track_number, player)}} onMouseLeave={(e)=>{Like_Btn_off(e), Player_Btn_off(e, album_id, track_number, player)}}>
+                            
+                            <Image src={(player.isPlaying === true && player.track_num === track_number) ? '/pause_dark_green.svg' : '/play_green.svg'} width={40} height={40} alt="play button" className="play_btn" onClick={(e) => mock_play_pause(e, album_id, track_number, name, player, setPlayer)}></Image>
+
                             <span className="track_num">{track_number}</span>                            
                             
                             <div className="list_container">
                                 <div className="title_artist">
-                                    <Link href={`/track/${id}`} ><div>{name}</div></Link>
+                                    <Link href={`/track/${id}`} >
+                                        <div id="track_name">{name}</div>
+                                    </Link>
     
                                     <div className="track_artist">
                                     {artists.map( (art, idx) => {

@@ -10,6 +10,7 @@ import search from '../utils/search'
 import validate_token from "@/utils/validate_token";
 import handleChange from "@/utils/handleChange";
 import Recently_Viewed from "./Components/Recently_Viewed";
+import Loading from "./Components/Loading";
 
 export default function App(){
 
@@ -17,21 +18,37 @@ export default function App(){
 
     const [selectCategories,setSelectCategories]= useState([])  
 
-    const categories = Object.keys(searchResult) ?? []
+    let categories = []
 
+    useEffect(() => {
+
+        if(searchResult.results !== null && typeof searchResult.results !== 'undefined'){
+
+            categories = Object.keys(searchResult.results)
+        }
+
+    }, [searchResult.results])
 
     useEffect(()=>{
 
         if(searchObj.query === ''){
-            setSearchResult({})
+            setSearchResult({
+                isReady: true,
+                results: null
+            })
             return;
         }
+
+        setSearchResult({
+            isReady: false,
+            results: null
+        })
 
         const timeout = setTimeout(() => {
             validate_token(search, searchObj, setSearchResult)
             const overlay = document.getElementById('overlay')
             overlay.style.display = 'none'
-        }, 500);
+        }, 700);
 
         return ()=>{clearTimeout(timeout)}
     
@@ -45,9 +62,9 @@ export default function App(){
 
             
             
-            <SearchResult results={searchResult} selectCategories={selectCategories}/>
+            <SearchResult results={searchResult.results} selectCategories={selectCategories}/>
             
-
+            {/* {searchResult.isReady ? null : <Loading title='Search Result: ' name='Searching...' type='Please Wait' />} */}
   
             {searchObj.query === '' ? <>
                                         <Recommendations />

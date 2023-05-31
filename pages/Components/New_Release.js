@@ -49,7 +49,7 @@ export default function New_Release() {
 
     if(loading){
         return(
-            <Loading title='New Release' name='Loading...' type='Please Wait...' img_url='/reload_black.svg'/>
+            <Loading title='New Release' name='Loading...' type='Please Wait...' />
         )
     }
 

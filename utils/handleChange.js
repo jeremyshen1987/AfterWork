@@ -1,4 +1,3 @@
-import search from "./search"
 
 export default function handleChange(e, searchObj ,setSearchObj){
 

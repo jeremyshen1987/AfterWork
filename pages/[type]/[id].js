@@ -36,7 +36,7 @@ export default function Album_Artist_Playlist(){
         }
     }, [type, id])
 
-    // catch errors from all types except artist
+    // catch errors from all types
     if(data !== null && typeof data.error !== 'undefined'){
         
         const err_msg = data.error.message ?? 'Something went wrong'
