@@ -20,7 +20,7 @@ export function MainProvider({ children }) {
     const [likes, setLikes] = useState([])
 
     const [player, setPlayer] = useState({
-        status: null,
+        isPlaying: false,
         album_id: null,
         track_num: null,
         position_ms: null

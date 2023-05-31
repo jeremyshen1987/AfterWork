@@ -2,10 +2,11 @@ import Link from "next/link"
 import Image from "next/image"
 import { Like_Btn_on, Like_Btn_off } from "@/utils/toggle_like_btn"
 import { Player_Btn_on, Player_Btn_off } from "@/utils/toggle_player_btn"
-import { play_pause_btn } from "@/utils/play_pause_btn"
+import { mock_play_pause } from "@/utils/play_pause"
 import toggleLike from "@/utils/toggleLike"
 import conversion_ms_minute from "@/utils/conversion_ms_minute"
 import { useMainContext } from "@/utils/context"
+import { useState, useEffect } from "react"
 
 export default function Playlist({album_id, type, tracks, img_url}){
 
@@ -14,8 +15,32 @@ export default function Playlist({album_id, type, tracks, img_url}){
     if(typeof tracks === 'undefined' || tracks === null){
         return
     }
-    
+
     const items = tracks.items
+
+    const [audio, setAudio] = useState(new Audio('/sample.mp3')) 
+
+    // const audio = new Audio('/sample.mp3')
+    
+    useEffect(() => {
+
+        player.isPlaying ? audio.play() : audio.pause()
+
+    }, [player.isPlaying])
+
+    useEffect(() => {
+
+        return()=>{
+
+            audio.pause()
+
+            setPlayer({
+                ...player,
+                isPlaying: false
+            })
+        }
+    }, [audio])
+    
 
     if(type === 'album'){
 
@@ -27,16 +52,16 @@ export default function Playlist({album_id, type, tracks, img_url}){
     
                     return(
                         
-                        <div key={id} className="playlist" onMouseOver={(e)=>{Like_Btn_on(e), Player_Btn_on(e, album_id, track_number, player)}} onMouseLeave={(e)=>{Like_Btn_off(e), Player_Btn_off(e, album_id, track_number, player)}}>
+                        <div key={id} className="playlist" id={track_number} onMouseOver={(e)=>{Like_Btn_on(e), Player_Btn_on(e, album_id, track_number, player)}} onMouseLeave={(e)=>{Like_Btn_off(e), Player_Btn_off(e, album_id, track_number, player)}}>
                             
-                            <Image src={player.status === 'playing' ? '/pause_dark_green.svg' : '/play_green.svg'} width={40} height={40} alt="play button" className="play_btn" onClick={() => play_pause_btn(album_id, track_number, setPlayer)}></Image>
+                            <Image src={(player.isPlaying === true && player.track_num === track_number) ? '/pause_dark_green.svg' : '/play_green.svg'} width={40} height={40} alt="play button" className="play_btn" onClick={(e) => mock_play_pause(e, album_id, track_number, player, setPlayer)}></Image>
                             <span className="track_num">{track_number}</span>
                             
                             <div className="list_container">
                                 
                                 <div className="title_artist">
                                     <Link key={id} href={`/track/${id}`}>
-                                    <div>{name}</div>
+                                    <div id="track_name">{name}</div>
                                     </Link>
     
                                     <div className="track_artist">
