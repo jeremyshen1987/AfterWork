@@ -1,11 +1,8 @@
-import Head from 'next/head'
-import Image from 'next/image'
-import { Inter } from 'next/font/google'
+
 import styles from '@/styles/Home.module.css'
 import Recommendations from './Components/Recommendations'
 import New_Release from './Components/New_Release'
 import Recently_Viewed from './Components/Recently_Viewed'
-import Navbar from './Components/Navbar'
 
 export default function Home() {
   return (

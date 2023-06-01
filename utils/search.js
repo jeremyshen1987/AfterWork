@@ -5,8 +5,6 @@ export default async function search(token, searchObj, setSearchResult){
         const {query, type} = searchObj
         const encoded_query = encodeURI(query)
     
-        console.log('query', encoded_query)
-        console.log('type', type)
     
         let types;
         
@@ -27,7 +25,6 @@ export default async function search(token, searchObj, setSearchResult){
     
         const results = await response.json();
     
-        console.log('result: ', results)
         setSearchResult({
             isReady: true,
             results:results

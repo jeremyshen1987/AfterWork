@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import Search from './Components/Search'
 import SearchResult from "./Components/SearchResult";
 import New_Release from "./Components/New_Release";
@@ -14,21 +14,19 @@ import Recently_Viewed from "./Components/Recently_Viewed";
 export default function App(){
 
     const {searchResult, setSearchResult, searchObj, setSearchObj} = useMainContext()
-
     const [selectCategories,setSelectCategories]= useState([])  
 
-    let categories = []
-
-    useEffect(() => {
-
-        if(searchResult.results !== null && typeof searchResult.results !== 'undefined'){
-
-            categories = Object.keys(searchResult.results)
-        }
-
-    }, [searchResult.results])
+    // prevent useEffect initial render 
+    const skip = useRef(true)
+    
 
     useEffect(()=>{
+
+        if(skip.current){
+
+            skip.current = false
+            return
+        }
 
         if(searchObj.query === ''){
             setSearchResult({
@@ -44,27 +42,25 @@ export default function App(){
         })
 
         const timeout = setTimeout(() => {
+
             validate_token(search, searchObj, setSearchResult)
             const overlay = document.getElementById('overlay')
             overlay.style.display = 'none'
         }, 700);
 
+
         return ()=>{clearTimeout(timeout)}
     
     }, [searchObj.query])
 
-
     return(
         <>
-            <Search categories={categories} selectCategories={selectCategories} setSelectCategories={setSelectCategories} 
+            <Search selectCategories={selectCategories} setSelectCategories={setSelectCategories} 
                 handleChange={(e)=>handleChange(e, searchObj, setSearchObj)} />
 
             
-            
             <SearchResult results={searchResult.results} selectCategories={selectCategories}/>
-            
-            {/* {searchResult.isReady ? null : <Loading title='Search Result: ' name='Searching...' type='Please Wait' />} */}
-  
+              
             {searchObj.query === '' ? <>
                                         <Recommendations />
                                         <Recently_Viewed /> 

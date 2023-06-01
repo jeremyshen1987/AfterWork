@@ -11,7 +11,7 @@ export default function handleChange(e, searchObj ,setSearchObj){
         ...searchObj,
         [e.target.name]: e.target.value
     })
-    console.log('search obj', searchObj)
+
 }
 
 
