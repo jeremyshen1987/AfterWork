@@ -1,4 +1,3 @@
-import Link from "next/link";
 import { useState, useEffect } from "react";
 import Search from './Components/Search'
 import SearchResult from "./Components/SearchResult";
@@ -10,7 +9,7 @@ import search from '../utils/search'
 import validate_token from "@/utils/validate_token";
 import handleChange from "@/utils/handleChange";
 import Recently_Viewed from "./Components/Recently_Viewed";
-import Loading from "./Components/Loading";
+
 
 export default function App(){
 
