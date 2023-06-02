@@ -6,8 +6,14 @@ export default function Recently_Viewed(){
     const [data, setData] = useState([])
 
     useEffect(()=>{
+
+        if(localStorage.getItem('history_after_work') === null){
+            return
+        }
+
         const history_list = JSON.parse(localStorage.getItem('history_after_work'))
-        if(history_list === null || !Array.isArray(history_list)){
+
+        if(!Array.isArray(history_list)){
             return
         }
 

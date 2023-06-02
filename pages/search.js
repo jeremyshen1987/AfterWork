@@ -36,6 +36,7 @@ export default function App(){
             return;
         }
 
+        //showing spinner early on purpose since search is really quick
         setSearchResult({
             isReady: false,
             results: null

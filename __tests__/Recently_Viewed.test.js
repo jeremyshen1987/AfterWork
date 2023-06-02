@@ -35,6 +35,8 @@ describe('recently viewed component', ()=>{
 
     it('nothing should be displayed when user did not view any album/tracks/artist', ()=>{
 
+      localStorage.setItem('history_after_work', null)
+
         render(<Recently_Viewed />)
 
         expect(screen.queryAllByText(/recently viewed/i).length).toEqual(0)

@@ -121,11 +121,11 @@ describe('dynamic route rendering based on router query type and id', () => {
 
         await screen.findByRole('button', {name: 'Like this artist'})
 
-        // after click 'like' button, button text changed to 'Unlike', artist object added to the 'liked' page and it has 'Suggest' button (for recommendation)
+        // after click 'like' button, button text changed to 'Unlike', artist object added to the 'liked' page and it has 'Rcmd' button (for recommendation)
         await userEvent.click(screen.getByRole('button', {name: 'Like this artist'}))
 
         expect(screen.getByRole('button', {name: 'Unlike'})).toBeInTheDocument()
-        expect(screen.getByRole('button', {name: 'Suggest'})).toBeInTheDocument()
+        expect(screen.getByRole('button', {name: 'Rcmd'})).toBeInTheDocument()
 
         // number of liked items are reflected on 'liked' tab in Menu page, as well as containing 'num_like' class
         const liked_num = screen.getByText(1)
@@ -135,7 +135,7 @@ describe('dynamic route rendering based on router query type and id', () => {
         // click 'Unlike' button to remove artist object and number of likes from 'liked' page 
         await userEvent.click(screen.getByRole('button', {name: 'Unlike'}))
 
-        expect(screen.queryByRole('button', {name: 'Suggest'})).not.toBeInTheDocument()
+        expect(screen.queryByRole('button', {name: 'Rcmd'})).not.toBeInTheDocument()
         expect(screen.queryByText(1)).not.toBeInTheDocument()
 
         screen.debug()
