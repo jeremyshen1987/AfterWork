@@ -43,7 +43,7 @@ export default function Playlist_Page({data}){
                             
                             <span>{followers.total} Likes</span>
                             <span style={{margin: '0 5px'}}>•</span>
-                            <span>{tracks.total} songs</span>
+                            <span className="margin_right">{tracks.total} songs</span>
                             <button onClick={()=>toggleLike(type, name, id, img_url, likes, setLikes)} className="round_btn like_btn">
                                 {likes.filter(like => like.id === id).length > 0 ? 'Unlike' : 'Like this Playlist'}
                             </button>

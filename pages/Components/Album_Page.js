@@ -1,23 +1,49 @@
-import { useEffect } from "react"
 import Link from "next/link"
+import Image from "next/image"
 import { useMainContext } from "@/utils/context"
 import Playlist from "./Album_Playlist"
 import upperCase from "@/utils/upperCase"
 import toggleLike from "@/utils/toggleLike"
 import setHistory from "@/utils/setHistory"
 import setColor from "@/utils/setColor"
+import { useEffect, useRef } from "react"
 
 export default function Album_Page({data}){
 
     const {likes, setLikes} = useMainContext()
 
+    useEffect(() => {
+
+        function more_option(e){
+
+            e.stopPropagation()
+
+            const spotify_link = document.getElementsByClassName('to_spotify')[0]
+
+            if(e.target.classList.contains('options_img')){
+
+                //toggle 
+                spotify_link.style.visibility = spotify_link.style.visibility === 'visible' ? 'hidden' : 'visible'
+                return
+            }
+
+            spotify_link.style.visibility = 'hidden'
+        }
+
+        document.addEventListener('click', more_option)
+
+        return () => {
+            document.removeEventListener('click', more_option)
+        }
+
+    }, [])
 
     if(typeof data === 'undefined' || data === null){
         return
     }
 
     try{
-        const {artists, external_urls, images, release_date, name, tracks, total_tracks, type, genres, id} = data
+        const {artists, external_urls, images, release_date, name, tracks, total_tracks, type, id} = data
         const img_url = images[0].url
 
         setHistory(type, name, id, img_url)
@@ -50,10 +76,15 @@ export default function Album_Page({data}){
                             
                             <span>{(new Date(release_date)).getFullYear()}</span>
                             <span style={{margin: '0 5px'}}>•</span>
-                            <span>{total_tracks} songs</span>
-                            <button onClick={()=>toggleLike(type, name, id, img_url, likes, setLikes)} className="round_btn like_btn">
-                                {likes.filter(like => like.id === id).length > 0 ? 'Unlike' : 'Like this album'}
-                            </button>
+                            <span className="margin_right">{total_tracks} songs</span>
+
+                            <span className="options_album_playlist">
+                                <Image src='/option.svg' width={25} height={25} alt="Options" title="Options" className="options_img"></Image>
+                                <a className="to_spotify" href={external_urls.spotify} target="_blank">View in Spotify</a>
+                            </span>
+                            <Image src={likes.filter(like => like.id === id).length > 0 ? '/heart_filled_green.svg' : '/heart_empty_green.svg'} width={50} height={50} alt="like"
+                                onClick={()=>toggleLike(type, name, id, img_url, likes, setLikes)} className="round_btn like_btn">
+                            </Image>
                         </div>
                         
                     </div>
@@ -66,7 +97,7 @@ export default function Album_Page({data}){
         )
 
     }catch(err){
-        console.log(err)
+        console.log(err.message)
     }
 
 }

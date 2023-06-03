@@ -222,8 +222,31 @@ a {
     flex-wrap: wrap;
 }
 
-.like_btn {
-  margin-left: auto;
+.margin_right {
+  margin-right: auto;
+}
+
+.options_album_playlist {
+  position: relative;
+  padding: 10px;
+  margin-right: 20px;
+}
+
+.to_spotify {
+  position: absolute;
+  left: 5px;
+  top: 50px;
+  width: 130px;
+  padding: 10px 15px;
+  border-radius: 10px;
+  white-space: nowrap;
+  background-color: white;
+  color: black;
+  visibility: hidden;
+}
+
+.to_spotify:hover {
+  background-color: var(--essential-bright-accent);
 }
 
 #like_playlist_track {
@@ -297,7 +320,6 @@ a {
 
 .track_duration {
   margin-left: auto;
-  /* width: 36px; */
 }
 
 .category_name {
@@ -468,6 +490,11 @@ button {
   color: black; 
 }
 
+.like_artist_btn {
+  background-color: black;
+  color: white;
+  border: 1px solid hsla(0,0%,100%,.3) ;
+}
 
 .r {
     display: inline-block;

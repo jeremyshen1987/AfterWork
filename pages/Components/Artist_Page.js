@@ -1,3 +1,5 @@
+import { useEffect } from 'react'
+import Image from 'next/image'
 import Cards_Group from './Cards_Group'
 import upperCase from "@/utils/upperCase"
 import toggleLike from '@/utils/toggleLike'
@@ -8,6 +10,32 @@ import { useMainContext } from "@/utils/context"
 export default function Artist_Page({data}){
 
     const {likes, setLikes} = useMainContext()
+
+    useEffect(() => {
+
+        function more_option(e){
+
+            e.stopPropagation()
+
+            const spotify_link = document.getElementsByClassName('to_spotify')[0]
+
+            if(e.target.classList.contains('options_img')){
+
+                //toggle 
+                spotify_link.style.visibility = spotify_link.style.visibility === 'visible' ? 'hidden' : 'visible'
+                return
+            }
+
+            spotify_link.style.visibility = 'hidden'
+        }
+
+        document.addEventListener('click', more_option)
+
+        return () => {
+            document.removeEventListener('click', more_option)
+        }
+
+    }, [])
 
     if(typeof data === 'undefined' || data === null){
         return
@@ -37,8 +65,15 @@ export default function Artist_Page({data}){
     
                         
                     <div className='like_artist'>
-                        <span>{followers.total} Likes</span>
-                        <button onClick={()=>toggleLike(type, name, id, img_url, likes, setLikes)} className="round_btn like_btn">
+                        <span className='margin_right'>{followers.total} Likes</span>
+
+
+                        <span className="options_album_playlist">
+                                <Image src='/option.svg' width={25} height={25} alt="Options" title="Options" className="options_img"></Image>
+                                <a className="to_spotify" href={artist_info.external_urls.spotify} target="_blank">View in Spotify</a>
+                        </span>
+
+                        <button onClick={()=>toggleLike(type, name, id, img_url, likes, setLikes)} className="round_btn like_artist_btn">
                                 {likes.filter(like => like.id === id).length > 0 ? 'Unlike' : 'Like this artist'}
                         </button>
                     </div>
